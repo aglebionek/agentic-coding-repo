@@ -49,7 +49,7 @@ To prevent conflicts, **every session MUST work in its own git worktree**, never
 - **ALWAYS ask if you're unsure about something related to solving your task**.
 - **ALWAYS save your plan and resume command in text files** inside the worktree main directory.
 - **NEVER start implementing a plan before user approval**.
-- **NEVER edit files in the main checkout** (`/home/aglebionek/work/instago/app`) — only in your worktree.
+- **NEVER edit files in the main checkout** — only in your worktree.
 - **NEVER commit anything unless asked to**.
 - **Do NOT delete worktrees until asked to**.
 - **Do NOT run `git worktree prune`** or modify other worktrees.
