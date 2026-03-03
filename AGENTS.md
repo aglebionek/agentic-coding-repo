@@ -17,22 +17,7 @@ To prevent conflicts, **every session MUST work in its own git worktree**, never
 - `./.worktree-session`: Contains current session parameters (branch-name, model-name, task, started, path-to-worktree) for reference.
 
 ### Docs
-- `./.aglebionek/docs/_main.md`: This file, which contains the workflow and instructions for using git worktrees for AI sessions.
-- `./.aglebionek/docs/repo.md`: Documentation about the overall repo structure and guidelines.
-- `./.aglebionek/docs/frontend/_main.md`: Information about the frontend architecture, patterns, and guidelines.
-- `./.aglebionek/docs/frontend/data-model.md`: Documentation about the data models used in the frontend, including ComponentsUI, segments, page composition, and database schemas.
-- `./.aglebionek/docs/frontend/editor.md`: Documentation about the editor system, including the state machine, element selection, highlights, and popups.
-- `./.aglebionek/docs/frontend/grid.md`: Documentation about the grid system the app uses.
-- `./.aglebionek/docs/frontend/history.md`: Documentation about the history system the app uses.
-- `./.aglebionek/docs/frontend/state.md`: Documentation about the React Context providers
-- `./.aglebionek/docs/backend/_main.md`: Information about the backend architecture, patterns, and guidelines.
-- `./.aglebionek/docs/backend/auth.md`: Documentation about the authentication system: magic links, OAuth, sessions, JWT.
-- `./.aglebionek/docs/backend/api.md`: Documentation about the API structure, routing, middleware chain, and error handling.
-- `./.aglebionek/docs/backend/ai.md`: Documentation about the AI system: agents, chat editor, content generation, token tracking.
-- `./.aglebionek/docs/backend/publishing.md`: Documentation about the publishing pipeline, domain management, and static file serving.
-- `./.aglebionek/docs/backend/payments.md`: Documentation about the Stripe payment system: subscriptions, plans, webhooks, paywall.
-- `./.aglebionek/docs/backend/templates.md`: Documentation about the template system: sections, page generation, variants.
-- `./.aglebionek/docs/backend/cron.md`: Documentation about scheduled background jobs and cleanup tasks.
+// put paths to docfiles, that briefly describe existing systems, their locations, relations and minutiae
 
 ### Scripts
 - `./.aglebionek/scripts/checkIfAlreadyInWorktree.sh`: Checks if the current directory is already inside a git worktree and exits with an error if so, to prevent nesting worktrees.
@@ -40,6 +25,10 @@ To prevent conflicts, **every session MUST work in its own git worktree**, never
 - `./.aglebionek/scripts/list_worktrees.sh`: Lists all existing worktrees with their branch names and paths.
 - `./.aglebionek/scripts/openWorktreeInCode.sh <path-to-worktree>`: Opens the specified worktree in VS Code.
 - `./.aglebionek/scripts/removeWorktree.sh <path-to-worktree>`: Removes the specified worktree and deletes its branch.
+
+### Tests
+// brief description on what to run to test things, and what not to do
+- DO NOT build the app to test your work.
 
 ### Worktree Setup
 1. **Run bashscript to create a new worktree** for your session (replace placeholders):
