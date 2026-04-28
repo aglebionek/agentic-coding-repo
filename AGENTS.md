@@ -1,5 +1,6 @@
 ## Brief
 Multiple AI model sessions may run in parallel on this repo. 
+When a user mentions a skill to use, look at the available skills.
 To prevent conflicts, **every session MUST work in its own git worktree**, never in the main checkout, unless told otherwise.
 
 ## Rules
@@ -25,6 +26,15 @@ If your worktree already exists (you're resuming work), just `cd` into it.
 ### Docs
 // path to docs
 
+### Skills
+Keeping skills here instead of loading them on every session start to save tokens/shrink context window. These are the skills available to the model for this session, which can be used to solve the task:
+- `./.aglebionek/skills/answer-and-stop/SKILL.md`: Answer the user's question and stop. Use when the user wants a direct answer without further questioning, or types a&s.
+- `./.aglebionek/skills/caveman/SKILL.md`: Ultra-compressed communication mode. Cuts token usage ~75% by dropping filler, articles, and pleasantries while keeping full technical accuracy. Use when user says "caveman mode", "talk like caveman", "use caveman", or invokes /caveman.
+- `./.aglebionek/skills/domain-model/SKILL.md`: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
+- `./.aglebionek/skills/grill-me/SKILL.md`: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
+- `./.aglebionek/skills/handoff-to-worktree/SKILL.md`: Crystallise the current conversation into a plan, save it to the session workspace, and give the user an exact prompt to paste into a fresh session to implement it. Use when the user wants to hand off a plan to a new session, or says "handoff", "save plan", or "start in new session".
+- `./.aglebionek/skills/improve-codebase-architecture/SKILL.md`: Identify and present opportunities to deepen the architecture of the codebase for better locality and leverage. Use when user wants to improve codebase architecture, or says "improve architecture", "deepen architecture", "refactor for locality", or "refactor for leverage".
+
 ### Scripts
 - `./scripts/checkIfAlreadyInWorktree.sh`: Checks if the current directory is already inside a git worktree and exits with an error if so, to prevent nesting worktrees.
 - `./scripts/createWorktree.sh <branch-name> <model-name> "<one-line-task-description>"`: Creates a new git worktree for the session, sets up symlinks for shared resources, and saves session metadata.
@@ -44,7 +54,7 @@ If your worktree already exists (you're resuming work), just `cd` into it.
 
 2. **Save your plan in the worktree as plan.md**
 
-3. **Print worktree info** at the very start of your first response, before doing anything else:
+3. **Print worktree info** 
    ```
    📂 Worktree: <path-to-worktree>
    🌿 Branch: <branch-name>
