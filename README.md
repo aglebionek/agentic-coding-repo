@@ -22,11 +22,13 @@ Reusable skills for the GitHub Copilot CLI agent. Skills are invoked by name dur
 |---|---|
 | `answer-and-stop` | Answer the user's question briefly and directly, then stop the conversation |
 | `handoff-to-worktree` | Crystallise a conversation into a plan and hand it off to a fresh session |
+| `testable-module` | Inspired by the `improve-codebase-architecture`, it tries to refactor already existing code not the improve it, but to rewrite it in a more testable way. Using Test-Driven Development approach, it writes tests first and then refactors the code to make it pass the tests. Great for making the codebase more AI-friendly and improving test coverage.
 |||
 | `caveman` | Ultra-compressed communication mode (~75% fewer tokens) |
 | `grill-me` | Relentlessly interview the user about a plan or design |
 | `domain-model` | Stress-test a plan against the project's domain model and update docs |
 | `improve-codebase-architecture` | Find deepening/refactoring opportunities informed by the domain language |
+| `write-a-skill` | Write a new skill based on user instructions |
 
-The `caveman`, `grill-me`, `domain-model`, and `improve-codebase-architecture` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
+The `caveman`, `grill-me`, `domain-model`, `improve-codebase-architecture`, and `write-a-skill` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
 
