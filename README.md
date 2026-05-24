@@ -21,7 +21,12 @@ Reusable skills for the GitHub Copilot CLI agent. Skills are invoked by name dur
 | Skill | Description |
 |---|---|
 | `answer-and-stop` | Answer the user's question briefly and directly, then stop the conversation |
+| `create-gh-issue` | Create GitHub issues with the `gh` CLI. Assumes the existance of issue templates. |
+| `create-gh-pr` | Create GitHub pull requests with the `gh` CLI. Assumes the existance of a pull request template. |
+| `grow-docs` | Meant to be used at the end of coding sessions to document the codebase and changes made. It creates clusters of brief, wikilinked notes, then audits the vault for broken links and doc gaps to fill next.
 | `handoff-to-worktree` | Crystallise a conversation into a plan and hand it off to a fresh session |
+| `implement-strategy` | Guides an implementation of a strategy. Mentions the [docs](../grow-docs/SKILL.md) and [testable-module](../testable-module/SKILL.md) strategies as part of the implementation steps, and grills the user for any missing details to create a complete plan.
+| `review-changes` | A WIP code reviewer for multishot AI workflows.
 | `testable-module` | Inspired by the `improve-codebase-architecture`, it tries to refactor already existing code not the improve it, but to rewrite it in a more testable way. Using Test-Driven Development approach, it writes tests first and then refactors the code to make it pass the tests. Great for making the codebase more AI-friendly and improving test coverage.
 |||
 | `caveman` | Ultra-compressed communication mode (~75% fewer tokens) |
