@@ -50,7 +50,17 @@ Write the pure function that makes all tests pass:
 
 Run the tests. Iterate until all pass.
 
-### Phase 5 — Summarize
+### Phase 5 — Check docs
+
+Before summarising, grep `docs/obsidian/` for any notes that reference the module or file being rewritten:
+
+```bash
+grep -rl '<module-name>\|<file-name>' docs/obsidian/
+```
+
+For each note found, check if the rewrite changed anything the note describes (file path, function signature, behaviour, API shape). If so, update the note inline. Report which notes were touched (or "no docs to update" if none found).
+
+### Phase 6 — Summarize
 
 Write a brief summary to the user containing:
 - The agreed API signature(s)

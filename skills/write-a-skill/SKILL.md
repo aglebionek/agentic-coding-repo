@@ -115,3 +115,5 @@ After drafting, verify:
 - [ ] Consistent terminology
 - [ ] Concrete examples included
 - [ ] References one level deep
+
+After the checklist, do a **compact pass**: re-read SKILL.md and cut any sentence that restates something already said, spells out what's obvious from context, or could be a bullet instead of a paragraph. Target is the shortest version that loses no meaning.

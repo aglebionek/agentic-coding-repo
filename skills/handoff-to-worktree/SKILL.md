@@ -1,6 +1,6 @@
 ---
 name: handoff-to-worktree
-description: Crystallise the current conversation into a plan, save it to the session workspace, and give the user an exact prompt to paste into a fresh session to implement it. Use when the user wants to hand off a plan to a new session, says "handoff","start in new session", or invokes /handoff.
+description: Crystallise the current conversation into a plan, save it to the session workspace, and give the user an exact prompt to paste into a fresh session to implement it. Use when the user wants to hand off a plan to a new session, or says "handoff", "save plan", or "start in new session".
 ---
 
 # Handoff to Worktree
@@ -14,7 +14,7 @@ You are closing out a planning conversation and handing it off to a fresh implem
 From the conversation so far, extract:
 
 - **Problem** — one paragraph: what is broken or missing, and why it matters
-- **Approach** — the chosen solution strategy
+- **Approach** — the chosen solution strategy (not alternatives)
 - **Provider / module tree** — if architectural, show the nesting/dependency order
 - **Interfaces** — the new public interfaces (hooks, functions, types) with their fields
 - **Files to create/modify** — exhaustive list with one-line descriptions
