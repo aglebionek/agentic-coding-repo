@@ -9,3 +9,4 @@ The review should focus on:
 - Completeness of the implementation (e.g. error handling, edge cases)
 - Alignment with project conventions, architecture [and module testability](../testable-module/)
 - Completeness of test coverage
+- [Necessary documentation updates ](../grow-docs/)

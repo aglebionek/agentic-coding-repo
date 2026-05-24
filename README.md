@@ -37,3 +37,9 @@ Reusable skills for the GitHub Copilot CLI agent. Skills are invoked by name dur
 
 The `caveman`, `grill-me`, `domain-model`, `improve-codebase-architecture`, and `write-a-skill` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
 
+
+### Potential additions
+- Triage skill - would require a set of defined github label.
+- More multishot components - workflows/skills (from triage to issue review, tests, implementation, docs update to the final PR, with intermediate code reviews and checks, adhering to the coding guidelines like module testability).
+- More strict and interconnected core guidelines (e.g. "always write tests first (red/green)", "always update docs at the end", "read the related docs from...", "make sure the module is testable") and skills to enforce them.
+- More defined worktree lifecycle management (e.g. automatic cleanup of old worktrees, reminders to delete worktree after session ends, etc.). Alternatively, use something else than git worktrees? Docker containers maybe?
