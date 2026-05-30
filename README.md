@@ -7,6 +7,9 @@ A personal repo for agentic coding workflows — configurations, scripts, and sk
 ### `AGENTS.md`
 Instructions injected into every AI agent session. Enforces a git worktree workflow so multiple parallel agent sessions don't conflict with each other. Each session gets its own branch and worktree directory.
 
+### `notes/`
+A collection of obsidian notes I've made during AI coding research.
+
 ### `scripts/`
 Shell scripts for managing git worktrees:
 - `createWorktree.sh` — creates a new worktree + branch for an agent session
@@ -15,8 +18,8 @@ Shell scripts for managing git worktrees:
 - `openWorktreeInCode.sh` — opens a worktree in VS Code
 - `checkIfAlreadyInWorktree.sh` — guard script to prevent nested worktrees
 
-### `.agents/skills/`
-Reusable skills for the GitHub Copilot CLI agent. Skills are invoked by name during a session to activate specialised behaviour.
+### `skills/`
+Reusable agent skills. Skills are invoked by name during a session to activate specialised behaviour.
 
 | Skill | Description |
 |---|---|
