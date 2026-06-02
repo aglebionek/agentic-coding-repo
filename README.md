@@ -5,7 +5,13 @@ A personal repo for agentic coding workflows — configurations, scripts, and sk
 ## What's in here
 
 ### `AGENTS.md`
-Instructions injected into every AI agent session. Enforces a git worktree workflow so multiple parallel agent sessions don't conflict with each other. Each session gets its own branch and worktree directory.
+Used for working on this repo.
+
+### `AGENTS-worktree.md`
+ Enforces a git worktree workflow so multiple parallel agent sessions don't conflict with each other. Each session gets its own branch and worktree directory.
+
+### `GLOSSARY.md`
+Shared terminology for recurring concepts. Read it at session start, capture candidate changes into the deferred glossary backlog during unrelated work, and update it later in a focused glossary session.
 
 ### `notes/`
 A collection of obsidian notes I've made during AI coding research.
@@ -17,6 +23,7 @@ Shell scripts for managing git worktrees:
 - `list_worktrees.sh` — lists all active worktrees
 - `openWorktreeInCode.sh` — opens a worktree in VS Code
 - `checkIfAlreadyInWorktree.sh` — guard script to prevent nested worktrees
+- `glossary_backlog.py` — captures deferred glossary candidates, emits an aggregated handoff, and marks backlog items resolved
 
 ### `skills/`
 Reusable agent skills. Skills are invoked by name during a session to activate specialised behaviour.
@@ -26,6 +33,8 @@ Reusable agent skills. Skills are invoked by name during a session to activate s
 | `answer-and-stop` | Answer the user's question briefly and directly, then stop the conversation |
 | `create-gh-issue` | Create GitHub issues with the `gh` CLI. Assumes the existance of issue templates. |
 | `create-gh-pr` | Create GitHub pull requests with the `gh` CLI. Assumes the existance of a pull request template. |
+| `glossary-handoff` | Turn deferred glossary backlog items into one aggregated handoff for a later glossary session. |
+| `glossary-backlog-cleanup` | Reconcile pending glossary backlog items against `GLOSSARY.md` and mark clearly completed items resolved. |
 | `grow-docs` | Meant to be used at the end of coding sessions to document the codebase and changes made. It creates clusters of brief, wikilinked notes, then audits the vault for broken links and doc gaps to fill next.
 | `handoff-to-worktree` | Crystallise a conversation into a plan and hand it off to a fresh session |
 | `implement-strategy` | Guides an implementation of a strategy. Mentions the [docs](../grow-docs/SKILL.md) and [testable-module](../testable-module/SKILL.md) strategies as part of the implementation steps, and grills the user for any missing details to create a complete plan.
@@ -40,10 +49,13 @@ Reusable agent skills. Skills are invoked by name during a session to activate s
 
 The `caveman`, `grill-me`, `domain-model`, `improve-codebase-architecture`, and `write-a-skill` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
 
+### Glossary backlog flow
+`AGENTS.md` now tells agents to read `GLOSSARY.md` at session start and to defer strong glossary candidates into a backlog instead of derailing the active task. The default backlog lives outside the repo at `/tmp/agentic-coding-glossary-backlog.json`, and `scripts/glossary_backlog.py` can capture, list, hand off, resolve, and reopen backlog items.
+
 
 ### Potential additions
 - Triage skill - would require a set of defined github label.
 - More multishot components - workflows/skills (from triage to issue review, tests, implementation, docs update to the final PR, with intermediate code reviews and checks, adhering to the coding guidelines like module testability).
 - More strict and interconnected core guidelines (e.g. "always write tests first (red/green)", "always update docs at the end", "read the related docs from...", "make sure the module is testable") and skills to enforce them.
 - More defined worktree lifecycle management (e.g. automatic cleanup of old worktrees, reminders to delete worktree after session ends, etc.). Alternatively, use something else than git worktrees? Docker containers maybe?
-- Docs expansions - something like a glossary for the calcified terminology and concepts - no more than one or two sentences per term, with links to examples and more detailed explanations in seperate notes. It's annoying that you have to reexplain the same concepts over and over again in every session, and a shared glossary would speed things up and improve consistency across sessions. Might want to combine it with skills like grill me and grow docs, or even mention the glossary and add an auto-updating instruction directly to AGENTS.md.
+- Docs expansions - deepen the glossary and related note graph now that the shared glossary/backlog flow exists.
