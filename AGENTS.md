@@ -1,30 +1,32 @@
-## Brief
-This is a personal repo for agentic coding workflows — configurations, scripts, and skills for working with AI coding agents (primarily GitHub Copilot CLI). 
+## Base
+This repository is a product tracking android app created with React Native Expo.
 
-## Contents
-- `AGENTS.md`: This file, used when working on this repo.
-- `GLOSSARY.md`: Shared glossary for stable terminology across sessions. Read it at session start when it exists.
+## Rules
+ALWAYS use grill-me if you're unsure about something.
+NEVER start implementing a plan before user approval.
+NEVER commit anything unless asked to.
+NEVER delete worktrees until asked to.
+
+## Model resources
+
+### Docs
+`GLOSSARY.md` - This file holds stable terminology for this repo and its workflows.
+_Link any other docs here_
 
 ### Skills
-Whenever a user mentions a skill to use, look at the available skills in the `skills/` directory and use the relevant one.
-
-- `./skills/answer-and-stop/SKILL.md`: Answer the user's question and stop. Use when the user wants a direct answer without further questioning.
-- `./skills/glossary-handoff/SKILL.md`: Turn pending glossary backlog items into one aggregated handoff for a later session. Use when user wants to defer glossary work, asks for a glossary handoff, or wants the backlog batched into a prompt.
-- `./skills/glossary-backlog-cleanup/SKILL.md`: Reconcile pending glossary backlog items against `GLOSSARY.md` and mark clearly completed items resolved. Use when user asks to clean up, reconcile, or resolve glossary backlog items after glossary work.
+When you want to invoke a skill, read the appropriate skill file.
+- `./skills/answer-and-stop/SKILL.md`: Answer the user's question and stop. Use when the user wants a direct answer without further questioning, or types a&s.
+- `./skills/caveman/SKILL.md`: Use when user says "caveman mode", "talk like caveman", "use caveman", or invokes /caveman.
+- `./skills/create-gh-issue/SKILL.md`: Uses gh cli to create an issue in the repo. Use when asked to create an issue.
 - `./skills/grill-me/SKILL.md`: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
-- `./skills/grow-docs/SKILL.md`: Writes and expands an Obsidian knowledge vault at docs/obsidian/ for this repo. Creates clusters of brief, wikilinked notes from codebase exploration, then audits the vault for broken wikilinks and surfaces gaps. Use when user wants to document, expand, or map the codebase in Obsidian, or says "grow docs", "document X", "add obsidian docs", or "expand the vault".
-- `./skills/handoff/SKILL.md`: Use when user mentions "handoff". Used to create a handoff prompt for a fresh session.
-- `./skills/write-a-skill/SKILL.md`: Write a new skill based on user instructions. Use when user wants to create a new skill, or says "write a skill", "create a skill", or "new skill".
+- `./skills/grow-docs/SKILL.md`: Expands documentation. Use when user mentions "grow-docs".
+- `./skills/grow-glossary/SKILL.md`: Finds glossary-worthy terms from the current conversation and session artifacts, diffs them against `GLOSSARY.md`, and reports only missing terms. Use at the end of a conversation, plan, or implementation when the user wants to grow the glossary, calcify terminology, or review missing glossary candidates.
+- `./skills/handoff-to-worktree/SKILL.md`: Crystallise the current conversation into a plan, save it to the session workspace, and give the user an exact prompt to paste into a fresh session to implement it. Use when the user wants to hand off a plan to a new session, or says "handoff", "save plan", or "start in new session".
+- `./skills/improve-codebase-architecture/SKILL.md`: Identify and present opportunities to deepen the architecture of the codebase for better locality and leverage. Use when user wants to improve codebase architecture, or says "improve architecture", "deepen architecture", "refactor for locality", or "refactor for leverage".
+- `./skills/review-intent-and-coverage/SKILL.md`: Use when user asks for a review of current changes, to validate intent, or to check whether tests and coverage are sufficient.
+- `./skills/testable-module/SKILL.md`: Guides refactoring code as a testable module with a clear pure-function API. Follows a TDD flow: agree on contract → write tests → implement. Use when user wants to make code testable, extract a module API, says "make testable", "module API", or "rewrite as module".
+- `./skills/worktree/SKILL.md`: A set of instructions and scripts for creating and managing git worktrees for this repository. Use when user wants to create a worktree for agent sessions/code changes/plan implementation.
+- `./skills/write-a-skill/SKILL.md`: Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.
 
-### Glossary workflow
-1. At session start, if `./GLOSSARY.md` exists, read it before planning or answering so terminology stays consistent.
-2. During normal work, do not derail the session into glossary editing. When you notice a strong glossary candidate, capture it to the deferred backlog and continue the main task.
-3. A glossary candidate is worth capturing only when at least one of these is true:
-   - repeated term usage suggests a concept should be defined
-   - a term conflicts with existing glossary language
-   - an important term is missing from `GLOSSARY.md`
-   - the user explicitly asks for a glossary change
-4. Capture only a minimal note: term, why it looks glossary-worthy, and evidence/context. Merge repeated sightings into the same backlog item instead of creating duplicates.
-5. Use `python3 ./scripts/glossary_backlog.py capture ...` with the default backlog path, unless the user or repo instructions override it.
-6. After capture, send only a short deferral notice. Do not start a glossary discussion unless the user asks for it.
-7. Do not update `GLOSSARY.md` automatically during unrelated work. Use the glossary handoff skill to batch pending items for later, and the glossary backlog cleanup skill to mark items resolved after glossary work is done.
+### Tests
+_Describe your tests here_
