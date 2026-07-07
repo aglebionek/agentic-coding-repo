@@ -5,10 +5,10 @@ REPO_URL="https://github.com/aglebionek/agentic-coding-repo"
 BRANCH="main"
 
 require_cmd() {
-command -v "$1" >/dev/null 2>&1 || {
-    echo "Missing required command: $1" >&2
-    exit 1
-}
+    command -v "$1" >/dev/null 2>&1 || {
+        echo "Missing required command: $1" >&2
+        exit 1
+    }
 }
 
 require_cmd curl
@@ -38,19 +38,20 @@ exit 1
 fi
 
 copy_if_exists() {
-local src="$1"
-local dest="$2"
+    local src="$1"
+    local dest="$2"
 
-if [[ -e "$src" ]]; then
-    rm -rf "$dest"
-    cp -R "$src" "$dest"
-    echo "Copied $(basename "$dest")"
-else
-    echo "Skipping missing path: $src" >&2
-fi
+    if [[ -e "$src" ]]; then
+        rm -rf "$dest"
+        cp -R "$src" "$dest"
+        echo "Copied $(basename "$dest")"
+    else
+        echo "Skipping missing path: $src" >&2
+    fi
 }
 
 copy_if_exists "$ROOT_DIR/AGENTS.md" "$DEST_DIR/AGENTS.md"
+copy_if_exists "$ROOT_DIR/CODING_GUIDELINES.md" "$DEST_DIR/CODING_GUIDELINES.md"
 copy_if_exists "$ROOT_DIR/GLOSSARY.md" "$DEST_DIR/GLOSSARY.md"
 copy_if_exists "$ROOT_DIR/skills" "$DEST_DIR/skills"
 

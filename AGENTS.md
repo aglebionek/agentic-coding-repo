@@ -11,6 +11,7 @@ NEVER delete worktrees until asked to.
 
 ### Docs
 `GLOSSARY.md` - This file holds stable terminology for this repo and its workflows.
+`CODING_GUIDELINES.md` - This file holds coding guidelines for you to follow.
 _Link any other docs here_
 
 ### Skills
