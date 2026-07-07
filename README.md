@@ -1,57 +1,47 @@
 # Agentic Coding Repo
 
-A personal repo for agentic coding workflows — configurations, scripts, and skills for working with AI coding agents (primarily GitHub Copilot CLI).
+A personal repo for agentic coding workflows: agent instructions, reusable skills, and research notes for working with AI coding agents.
 
 ## What's in here
 
 ### `AGENTS.md`
-Used for working on this repo.
-
-### `AGENTS-worktree.md`
- Enforces a git worktree workflow so multiple parallel agent sessions don't conflict with each other. Each session gets its own branch and worktree directory.
+Repository-level instructions for agent sessions. It lists the active repo rules, stable docs, and the local skills an agent can invoke.
 
 ### `GLOSSARY.md`
-Shared terminology for recurring concepts. Read it at session start, capture candidate changes into the deferred glossary backlog during unrelated work, and update it later in a focused glossary session.
+Stable terminology for this repo and its workflows. Use it to keep repeated concepts consistent across sessions, plans, and docs.
+
+### `fetch-agent-assets.sh`
+Bootstrap script that downloads `AGENTS.md`, `GLOSSARY.md`, and `skills/` from this repository into the current directory.
 
 ### `notes/`
-A collection of obsidian notes I've made during AI coding research.
-
-### `scripts/`
-Shell scripts for managing git worktrees:
-- `createWorktree.sh` — creates a new worktree + branch for an agent session
-- `removeWorktree.sh` — removes a worktree and deletes its branch
-- `list_worktrees.sh` — lists all active worktrees
-- `openWorktreeInCode.sh` — opens a worktree in VS Code
-- `checkIfAlreadyInWorktree.sh` — guard script to prevent nested worktrees
-- `glossary_backlog.py` — captures deferred glossary candidates, emits an aggregated handoff, and marks backlog items resolved
+Obsidian-style notes from AI coding research, including maps for key ideas, terminology, sources, and pasted image assets.
 
 ### `skills/`
-Reusable agent skills. Skills are invoked by name during a session to activate specialised behaviour.
+Reusable agent skills. Each skill is a directory with a `SKILL.md` entrypoint and, when needed, supporting references or scripts.
 
 | Skill | Description |
 |---|---|
-| `answer-and-stop` | Answer the user's question briefly and directly, then stop the conversation |
-| `create-gh-issue` | Create GitHub issues with the `gh` CLI. Assumes the existance of issue templates. |
-| `create-gh-pr` | Create GitHub pull requests with the `gh` CLI. Assumes the existance of a pull request template. |
-| `glossary-handoff` | Turn deferred glossary backlog items into one aggregated handoff for a later glossary session. |
-| `glossary-backlog-cleanup` | Reconcile pending glossary backlog items against `GLOSSARY.md` and mark clearly completed items resolved. |
-| `grow-docs` | Meant to be used at the end of coding sessions to document the codebase and changes made. It creates clusters of brief, wikilinked notes, then audits the vault for broken links and doc gaps to fill next.
-| `handoff-to-worktree` | Crystallise a conversation into a plan and hand it off to a fresh session |
-| `implement-strategy` | Guides an implementation of a strategy. Mentions the [docs](../grow-docs/SKILL.md) and [testable-module](../testable-module/SKILL.md) strategies as part of the implementation steps, and grills the user for any missing details to create a complete plan.
-| `review-changes` | A WIP code reviewer for multishot AI workflows.
-| `testable-module` | Inspired by the `improve-codebase-architecture`, it tries to refactor already existing code not the improve it, but to rewrite it in a more testable way. Using Test-Driven Development approach, it writes tests first and then refactors the code to make it pass the tests. Great for making the codebase more AI-friendly and improving test coverage.
-|||
-| `caveman` | Ultra-compressed communication mode (~75% fewer tokens) |
-| `grill-me` | Relentlessly interview the user about a plan or design |
-| `domain-model` | Stress-test a plan against the project's domain model and update docs |
-| `improve-codebase-architecture` | Find deepening/refactoring opportunities informed by the domain language |
-| `write-a-skill` | Write a new skill based on user instructions |
+| `answer-and-stop` | Answer directly and stop when the user wants no follow-up. |
+| `caveman` | Switch to an ultra-compressed communication style. |
+| `create-gh-issue` | Create GitHub issues with the `gh` CLI and repository issue templates. |
+| `create-gh-pr` | Create GitHub pull requests with the `gh` CLI and the repository PR template. |
+| `domain-model` | Stress-test a plan against domain language and record context or ADR decisions. |
+| `grill-me` | Interview the user about a plan or design until the open decisions are resolved. |
+| `grow-docs` | Expand an Obsidian documentation vault with short linked notes and gap audits. |
+| `grow-glossary` | Find glossary-worthy missing terms from the current conversation or artifacts. |
+| `handoff` | Crystallise a conversation into a plan for a fresh session. |
+| `handoff-to-worktree` | Save a plan and prepare a worktree-oriented handoff prompt. |
+| `implement-strategy` | Turn a strategy-file step into an implementation plan and handoff. |
+| `improve-codebase-architecture` | Surface architecture-deepening opportunities for locality, leverage, and testability. |
+| `review-changes` | Review pointed-to changes for plan adherence, quality, completeness, and docs/tests. |
+| `review-intent-and-coverage` | Inspect current changes, validate intended behavior, then verify or expand tests. |
+| `testable-module` | Refactor toward a pure-function module API using a TDD flow. |
+| `worktree` | Guide creation and use of per-session git worktrees. |
+| `write-a-skill` | Create new skills with the expected structure, metadata, and supporting resources. |
 
 The `caveman`, `grill-me`, `domain-model`, `improve-codebase-architecture`, and `write-a-skill` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
 
-### Glossary backlog flow
-`AGENTS.md` now tells agents to read `GLOSSARY.md` at session start and to defer strong glossary candidates into a backlog instead of derailing the active task. The default backlog lives outside the repo at `/tmp/agentic-coding-glossary-backlog.json`, and `scripts/glossary_backlog.py` can capture, list, hand off, resolve, and reopen backlog items.
-
+Some skills refer to files that are expected to exist in the target project where the skill is used, such as GitHub issue templates, a pull request template, `docs/obsidian/`, `CONTEXT.md`, ADR directories, or worktree scripts.
 
 ### Potential additions
 - Triage skill - would require a set of defined github label.
