@@ -33,6 +33,7 @@ Reusable agent skills. Each skill is a directory with a `SKILL.md` entrypoint an
 | `handoff-to-worktree` | Save a plan and prepare a worktree-oriented handoff prompt. |
 | `implement-strategy` | Turn a strategy-file step into an implementation plan and handoff. |
 | `improve-codebase-architecture` | Surface architecture-deepening opportunities for locality, leverage, and testability. |
+| `list-dont-modify` | List what the user asked for without making any file changes or trying to fix anything. |
 | `review-changes` | Review pointed-to changes for plan adherence, quality, completeness, and docs/tests. |
 | `review-intent-and-coverage` | Inspect current changes, validate intended behavior, then verify or expand tests. |
 | `testable-module` | Refactor toward a pure-function module API using a TDD flow. |
