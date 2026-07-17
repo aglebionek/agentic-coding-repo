@@ -1,4 +1,5 @@
-# use git to list all worktrees. Iterate over the worktrees, get their paths, and check ./.aglebionek/.worktree-session for the session and display it with the worktree info.
+#!/bin/bash
+
 # go up in dirs until we find the main checkout (where .git is)
 while [[ ! -d ".git" ]]; do
   cd ..
