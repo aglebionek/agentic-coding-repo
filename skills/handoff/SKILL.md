@@ -69,7 +69,6 @@ Default `<MODE_PROMPT>`:
 
 ```text
 Read <PLAN_FILE_PATH> and implement it.
-Suggested branch: <BRANCH_NAME>
 ```
 
 Branch `<MODE_PROMPT>`:
