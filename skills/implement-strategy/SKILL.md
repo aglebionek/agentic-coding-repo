@@ -1,6 +1,6 @@
 ---
 name: implement-strategy
-description: Guides steps for implementing project-creation strategy from a .md file. Use when the user asks you to.
+description: Guides steps for implementing project creation strategy from a .md file. Use when the user asks you to.
 ---
 
 # Step 1
