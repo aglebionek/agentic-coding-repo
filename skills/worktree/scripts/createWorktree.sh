@@ -1,3 +1,5 @@
+# !/bin/bash
+
 ${0%/*}/checkIfAlreadyInWorktree.sh
 
 # From the main repo root 
