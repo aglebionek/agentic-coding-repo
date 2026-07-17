@@ -8,9 +8,9 @@ cd "../worktrees/${BRANCH_NAME}"
 # copy or symlink anything you might need in the worktree, like .env files or node_modules
 
 cat > .worktree-session <<EOF
-path-to-worktree: $(pwd)
-branch-name: ${BRANCH_NAME}
-model-name: $2
-task: $3
-started: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    path-to-worktree: $(pwd)
+    branch-name: ${BRANCH_NAME}
+    model-name: $2
+    task: $3
+    started: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
 EOF
