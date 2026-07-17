@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Workflow"
+  short_description: "Orchestrate quality-first coding workflows"
+  default_prompt: "Use $code-workflow issue 787 manual to investigate, plan, implement after approval, and validate the fix."

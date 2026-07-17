@@ -7,6 +7,15 @@
 
 One-sentence definition. ^concept-definition
 
+## Intended purpose
+
+- Applies to: `<repository-relative path or symbol>`
+- Responsibility: <single coherent outcome>
+- Required behavior:
+  - <required behavior>
+- Forbidden behavior:
+  - <forbidden behavior or explicit non-goal>
+
 ## Key facts
 
 - Fact one ^fact-one
@@ -21,6 +30,8 @@ One-sentence definition. ^concept-definition
 
 [[Parent Domain Index]]
 ```
+
+Add applicable invariants, inputs, outputs, state transitions, side effects, errors, and external contracts as further purpose bullets. Omit irrelevant dimensions instead of adding empty boilerplate.
 
 ---
 

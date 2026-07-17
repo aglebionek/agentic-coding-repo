@@ -1,53 +1,99 @@
 ---
 name: handoff
-description: Crystallise the relevant parts of the current conversation into a plan. Give the user an exact prompt to paste into a fresh session to implement it. Use when the user wants to hand off a plan to a new session, or says "handoff", "save plan", or "start in new session".
+description: Crystallise the current conversation into a saved implementation plan and give the user an exact fresh-session prompt. Use when the user says "handoff", "handoff branch", "handoff worktree", "save plan", or "start in new session".
 ---
 
 # Handoff
 
-You are closing out a planning conversation and handing it off to a fresh implementation session.
+You are closing out a planning conversation and handing it off to a fresh implementation session. Do not implement.
+
+## Modes
+
+- **Default** — `handoff`, `save plan`, or similar with no branch/worktree mode. Save the plan and prompt a fresh session to implement it.
+- **Branch** — `handoff branch` or any request for a fresh agent to create a branch first. Save the plan and prompt the next agent to create the branch before implementation.
+- **Worktree** — `handoff worktree`, `handoff to worktree`, or legacy `handoff-to-worktree`. Save the plan and prompt the next agent to create/use a worktree before implementation.
 
 ## Steps
 
-### 1. Synthesise the plan
+### 1. Determine plan source
+
+Preserve an existing approved or coherent implementation plan. If no plan exists, synthesize one from the conversation before saving. Do not re-litigate decisions.
+
+### 2. Pick metadata
+
+- **Plan slug** — kebab-case, scoped when useful, e.g. `anonymous-landing-project-owner`.
+- **Branch name** — required for branch/worktree modes; optional suggestion for default mode. Use kebab-case with a prefix when useful, e.g. `fix/anonymous-landing-project-owner`.
+- **Model name** — for worktree mode only, use `claude-sonnet-4.6` unless the user specified another model.
+- **Task description** — for worktree mode only, one short shell-quoted sentence for `createWorktree.sh`.
+
+Ask only if branch mode was requested and there is not enough context to choose a branch name safely.
+
+### 3. Write the plan
 
 From the conversation so far, extract:
 
-- **Problem** — one paragraph: what is broken or missing, and why it matters
-- **Approach** — the chosen solution strategy (not alternatives)
-- **Provider / module tree** — if architectural, show the nesting/dependency order
-- **Interfaces** — the new public interfaces (hooks, functions, types) with their fields
-- **Files to create/modify** — exhaustive list with one-line descriptions
-- **Key decisions** — decisions already made that must NOT be re-litigated (record the reason too)
-- **Migration strategy** — if applicable, how existing consumers/callers are handled
-- **Branch name** — suggest a kebab-case branch name (e.g. `refactor/project-context-split`)
+- **Problem** — what is broken or missing, and why it matters.
+- **Approach** — chosen solution strategy, not alternatives.
+- **Provider / module tree** — if architectural, show nesting/dependency order.
+- **Interfaces** — new public hooks, functions, and types with fields.
+- **Files to create/modify** — exhaustive list with one-line descriptions.
+- **Key decisions** — decisions not to re-litigate, with reasons.
+- **Migration strategy** — if applicable, how existing consumers/callers are handled.
+- **Validation** — tests, checks, or manual verification to run.
+- **Mode instructions** — default, branch, or worktree instructions.
+- **Branch name** — chosen or suggested branch name.
+- **Worktree setup** — worktree mode only:
+  `./scripts/createWorktree.sh <BRANCH_NAME> <MODEL_NAME> "<TASK_DESCRIPTION>"`
 
 Be exhaustive. The fresh session will have no memory of this conversation.
 
-### 2. Save the plan
+### 4. Save the plan
 
-Save to: the session plan file (the agent knows its own session plan path from `<session_context>`).
+Save the plan under `./codex/handoffs/<YYYY-MM-DD>-<plan-slug>.md`. Create the directory if needed. Use the absolute path in the handoff block.
 
-Use the `create` tool (not `edit`) since the plan file may not exist yet. If it already exists (as in this conversation), use `edit` to overwrite its content.
+### 5. Print the handoff block
 
-### 3. Print the handoff block
+Use this wrapper for every mode:
 
-Print this exact block at the end of your response, filled in:
-
-```
+```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 HANDOFF READY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Open a new chat and paste:
 
-  Read <PLAN_FILE_PATH> and implement it.
-  Branch: <BRANCH_NAME>
+  <MODE_PROMPT>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Replace `<PLAN_FILE_PATH>` with the actual absolute path to the saved plan file.
-Replace `<BRANCH_NAME>` with the suggested branch name.
+Default `<MODE_PROMPT>`:
 
-### 4. Stop
+```text
+Read <PLAN_FILE_PATH> and implement it.
+Suggested branch: <BRANCH_NAME>
+```
+
+Branch `<MODE_PROMPT>`:
+
+```text
+Read <PLAN_FILE_PATH>.
+Create this branch before implementation:
+  <BRANCH_NAME>
+Then implement the plan.
+```
+
+Worktree `<MODE_PROMPT>`:
+
+```text
+Read <PLAN_FILE_PATH>.
+Create/use a worktree first:
+  ./scripts/createWorktree.sh <BRANCH_NAME> <MODEL_NAME> "<TASK_DESCRIPTION>"
+Then switch to that worktree and implement the plan.
+Branch: <BRANCH_NAME>
+Model: <MODEL_NAME>
+```
+
+Replace `<PLAN_FILE_PATH>` with the actual absolute path to the saved plan file, and every other placeholder with selected metadata.
+
+### 6. Stop
 
 Print the handoff block and stop the conversation.

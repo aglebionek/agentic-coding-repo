@@ -22,23 +22,50 @@ Reusable agent skills. Each skill is a directory with a `SKILL.md` entrypoint an
 | Skill | Description |
 |---|---|
 | `answer-and-stop` | Answer directly and stop when the user wants no follow-up. |
+| `bug-hunt-planner` | Convert a bug-hunt report into one read-only correction and verification plan. |
+| `bug-hunt-report` | Hunt for evidenced runtime bugs, edge cases, invalid states, and uncovered correctness risks. |
 | `caveman` | Switch to an ultra-compressed communication style. |
+| `code-smells-planner` | Convert a valid code-smells report into one read-only refactoring plan. |
+| `code-smells-report` | Identify Fowler catalog code smells in an explicit source target. |
+| `code-workflow` | Orchestrate evidence, planning, implementation, validation, and documentation for issue work, codebase improvement, and JavaScript-to-TypeScript conversion. |
+| `coding-standards-accordance-planner` | Convert a coding-standards-accordance report into one read-only correction plan. |
+| `coding-standards-accordance-report` | Audit JavaScript and TypeScript against the governing `CODING_GUIDELINES.md`. |
 | `create-gh-issue` | Create GitHub issues with the `gh` CLI and repository issue templates. |
 | `create-gh-pr` | Create GitHub pull requests with the `gh` CLI and the repository PR template. |
+| `create-report-planner-skill` | Create or update nested, read-only report/planner skill pairs. |
 | `domain-model` | Stress-test a plan against domain language and record context or ADR decisions. |
+| `give-commit-message` | Produce a concise commit message for completed coding work. |
 | `grill-me` | Interview the user about a plan or design until the open decisions are resolved. |
 | `grow-docs` | Expand an Obsidian documentation vault with short linked notes and gap audits. |
 | `grow-glossary` | Find glossary-worthy missing terms from the current conversation or artifacts. |
 | `handoff` | Crystallise a conversation into a plan for a fresh session. |
-| `handoff-to-worktree` | Save a plan and prepare a worktree-oriented handoff prompt. |
+| `handoff-to-worktree` | Legacy compatibility entry for worktree handoffs; prefer `handoff` worktree mode. |
 | `implement-strategy` | Turn a strategy-file step into an implementation plan and handoff. |
 | `improve-codebase-architecture` | Surface architecture-deepening opportunities for locality, leverage, and testability. |
+| `js-to-ts-planner` | Convert a valid JS-to-TS report into one read-only TypeScript conversion plan. |
+| `js-to-ts-report` | Analyze JavaScript or JSX targets for a safe, guideline-compliant TypeScript conversion. |
 | `list-dont-modify` | List what the user asked for without making any file changes or trying to fix anything. |
+| `purpose-adherence-planner` | Convert a valid purpose-adherence report into one actionable correction and verification plan. |
+| `purpose-adherence-report` | Audit code and contract surfaces against an approved Obsidian purpose contract. |
 | `review-changes` | Review pointed-to changes for plan adherence, quality, completeness, and docs/tests. |
 | `review-intent-and-coverage` | Inspect current changes, validate intended behavior, then verify or expand tests. |
 | `testable-module` | Refactor toward a pure-function module API using a TDD flow. |
+| `validate-current-changes` | Skeptically audit current local changes for logic errors, invalid states, unnecessary complexity, regressions, and misleading tests. |
 | `worktree` | Guide creation and use of per-session git worktrees. |
 | `write-a-skill` | Create new skills with the expected structure, metadata, and supporting resources. |
+
+### Code workflow
+
+`code-workflow` is the main orchestration skill for multi-step coding work. Use it when a request needs coordinated evidence gathering, specialist reports, planning, approved implementation, validation, and documentation rather than a single direct edit.
+
+It supports three profiles:
+- `code-workflow issue <issue-number-or-url> [manual|autorun]`
+- `code-workflow improve <file-or-directory> [manual|autorun]`
+- `code-workflow js-to-ts <files-or-symbols> [manual|autorun]`
+
+`manual` mode resolves material decisions one at a time with `grill-me`, then stops for explicit implementation approval. `autorun` mode makes safe, evidence-backed decisions without questions, but still stops for approval before implementation and at any quality-gate stop condition.
+
+The workflow coordinates specialist skills such as `bug-hunt-report`, `code-smells-report`, `coding-standards-accordance-report`, `js-to-ts-report`, their planners, `testable-module`, `grow-docs`, and `validate-current-changes`. It does not replace those skills; it preserves their artifacts and finding IDs while turning them into one approved work package.
 
 The `caveman`, `grill-me`, `domain-model`, `improve-codebase-architecture`, and `write-a-skill` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
 

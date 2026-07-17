@@ -8,11 +8,12 @@ description: Writes and expands an Obsidian knowledge vault at docs/obsidian/ fo
 ## Workflow
 
 1. **Check the concept** — does it have a coherent identity an engineer would look up? (`auth`, `payments`, `grid` ✓ — `hooks`, `utils`, `helpers` ✗ — those belong inside the concepts they serve)
-2. **Explore** — grep/glob the code area; read `docs/obsidian/` for existing notes to link to; check `.aglebionek/docs/` for reference material
-3. **Write a cluster** — 2–5 brief notes (≤40 lines each); see [REFERENCE.md](REFERENCE.md) for note format and link style
-4. **Update indexes** — add wikilinks to the new notes in the relevant `_<concept>.md`
-5. **Audit gaps** — run the script below; surface results as "Gaps to fill next"
-6. **Report** — notes created + gaps list
+2. **Establish intended purpose** — new concept notes require an approved purpose contract with `Applies to`, responsibility, required behavior, and forbidden behavior or non-goals; preserve existing approved contracts unless the user explicitly asks to change them; when purpose is unknown, report the gap and recommend `infer-purpose` instead of inferring it here
+3. **Explore** — grep/glob the code area; read `docs/obsidian/` for existing notes to link to; check `.aglebionek/docs/` for reference material
+4. **Write a cluster** — 2–5 brief notes (≤40 lines each); see [REFERENCE.md](REFERENCE.md) for note format and link style
+5. **Update indexes** — add wikilinks to the new notes in the relevant `_<concept>.md`
+6. **Audit gaps** — run the script below; surface results as "Gaps to fill next"
+7. **Report** — notes created + gaps list
 
 **Link pass** (run after several clusters land, or on request — "link pass", "enrich links"): scan notes for plain text that names an existing concept but isn't yet a wikilink; upgrade first occurrence per paragraph to `[[basename|text]]`; max 2–3 new links per note; skip code blocks and already-linked text; report each file touched.
 
@@ -54,4 +55,3 @@ comm -23 /tmp/linked.txt /tmp/existing_paths.txt | grep -v '/' | while read name
   grep -qx "$name" /tmp/existing_names.txt || echo "$name"
 done
 ```
-
