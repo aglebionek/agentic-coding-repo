@@ -1,36 +1,31 @@
 #!/bin/bash
 
-# go up in dirs until we find the main checkout (where .git is)
-while [[ ! -d ".git" ]]; do
-  cd ..
-  if [[ "$PWD" == "/" ]]; then
-    echo "Error: Could not find .git directory. Please run this script from within the repo."
-    exit 1
-  fi
-done
+# usage: ./removeWorktree.sh <path-to-worktree>
+WORKTREE_PATH=$1
+# check if path is provided
+if [ -z "$WORKTREE_PATH" ]; then
+  echo "Usage: $0 <path-to-worktree>"
+  exit 1
+fi
 
-echo -e "Found .git directory at: $PWD\n"
-MAIN_REPO_ROOT=$PWD
+# check if path exists
+if [ ! -d "$WORKTREE_PATH" ]; then
+  echo "Error: Path '$WORKTREE_PATH' does not exist."
+  exit 1
+fi
+cd "$WORKTREE_PATH"
 
-echo "Current worktrees and sessions"
-WORKTREES=$(git worktree list --porcelain | grep "worktree" | awk '{print $2}')
-echo "-----------------------------"
-for WORKTREE in $WORKTREES; do
-  if [[ "$WORKTREE" != *"/worktrees/"* ]]; then
-    continue
-  fi
-  echo "Worktree: $WORKTREE"
+# get the branch name before removing the worktree
+BRANCH_NAME=$(git branch --show-current)
 
-  cd "$WORKTREE"
-  echo "Branch: $(git branch --show-current)"
-  cd "$MAIN_REPO_ROOT"
+# go back so we're not inside the worktree when removing it
+cd - > /dev/null
 
-  if [[ -f "$WORKTREE/.worktree-session" ]]; then
-    SESSION=$(cat "$WORKTREE/.worktree-session")
-    echo "Session: $SESSION"
-  else
-    echo "Session: None"
-  fi
+# remove the worktree
+git worktree remove "$WORKTREE_PATH" --force
 
-  echo "-----------------------------"
-done
+# remove the branch associated with the worktree
+git branch -D "$BRANCH_NAME"
+
+# remove the directory if it still exists
+rm -rf "$WORKTREE_PATH"
