@@ -6,8 +6,8 @@ Maintain one work package throughout the workflow:
 
 | Field | Required content |
 |---|---|
-| Profile and mode | `issue`, `improve`, or `js-to-ts`; `manual` or `autorun` |
-| Source | Issue URL/number, improvement target, or conversion targets |
+| Profile and mode | `issue`, `bug-fix`, `improve`, `js-to-ts`, or `js-to-ts-autoscope`; `manual` or `autorun`; include `deep` or `wide` for `js-to-ts-autoscope` |
+| Source | Issue URL/number, bug-hunt report or target, improvement target, conversion targets, or autoscope seed and scope mode |
 | Analysis state | Repository, revision, dirty state, instructions, checks, and known baseline failures |
 | Scope | Exact editable boundary, inspected context, exclusions, and directly coupled surfaces |
 | Purpose | Governing approved notes and clauses, or explicit absence and its consequence |
@@ -24,11 +24,20 @@ Emit the work package in conversation unless the user requests a path. Do not wr
 
 ## Specialist artifact rules
 
-1. Keep each report and plan intact and attributable. Reference `BH-*`, `CS-*`, `CSA-*`, `PA-*`, and `JT-*` IDs exactly.
+1. Keep each report and plan intact and attributable. Reference `BH-*`, `CS-*`, `CSA-*`, `PA-*`, `JT-*`, and `JTA-*` IDs exactly.
 2. A synthesized plan must disposition every finding accepted from every input plan. Never silently drop, rename, or merge findings.
 3. Preserve each specialist's confidence, severity or reach, validity, scope, preservation rules, and stop conditions. Do not compare unlike severity schemes.
 4. Probable findings retain their verification gates. They cannot become implementation steps until the named proof confirms them.
 5. `Valid: false`, material staleness, or incompatible scopes block synthesis from that artifact. Record recovery and rerun the specialist instead.
+
+## Bug regression proof
+
+Every synthesized plan that fixes a bug-hunt finding must include durable regression proof mapped to the original finding ID.
+
+- Fixed confirmed findings, such as `BH-Fn`, require a specific regression test, focused reproduction check, or explicitly justified non-test proof.
+- Fixed probable findings, such as verified `BH-Pn`, require the pre-fix confirmation gate first, then the same regression-proof requirement as confirmed findings.
+- Prefer repository-native tests at the smallest credible level. Use integration, contract, type-level, migration, or reproduction checks when they prove the trigger and invariant more directly than a unit test.
+- If no durable test is reasonable, the plan must state why, name the alternate proof, and preserve that exception through implementation and completion reporting.
 
 ## Authority and conflict resolution
 
@@ -53,6 +62,7 @@ The plan must state:
 - files, symbols, ordered edits, dependencies, and preservation requirements
 - tests, types, callers, configuration, and documentation affected
 - focused proof for each acceptance criterion and finding
+- bug regression proof for every fixed `BH-*` finding, including justified non-test proof when applicable
 - risks, execution stop conditions, deferred findings, and external actions
 
 The plan is versioned by its content. Any new edit, expanded boundary, or changed behavior discovered during execution requires a supplemental plan and explicit approval.

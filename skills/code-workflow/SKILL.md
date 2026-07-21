@@ -1,6 +1,6 @@
 ---
 name: code-workflow
-description: Orchestrates evidence, planning, implementation, validation, and documentation for issue work, codebase improvement, and JavaScript-to-TypeScript conversion. Use when the user invokes "code-workflow issue", "code-workflow improve", or "code-workflow js-to-ts", optionally with "manual" or "autorun".
+description: Orchestrates evidence, planning, implementation, validation, and documentation for issue work, bug fixes, codebase improvement, and JavaScript-to-TypeScript conversion. Use when the user invokes "code-workflow issue", "code-workflow bug-fix", "code-workflow improve", "code-workflow js-to-ts", or "code-workflow js-to-ts-autoscope", optionally with "manual" or "autorun".
 ---
 
 # Code Workflow
@@ -12,16 +12,20 @@ Coordinate existing specialist skills; never reproduce or weaken their rules. Pr
 Require one profile and an explicit target:
 
 - `code-workflow issue <issue-number-or-url> [manual|autorun]`
+- `code-workflow bug-fix <bug-hunt-report-or-file-or-directory> [manual|autorun]`
 - `code-workflow improve <file-or-directory> [manual|autorun]`
 - `code-workflow js-to-ts <files-or-symbols> [manual|autorun]`
+- `code-workflow js-to-ts-autoscope <seed-file-or-symbol> [deep|wide] [manual|autorun]`
 
-Default to `manual`. Never interpret a bare request to write or review code as this workflow.
+Default workflow mode to `manual`. For `js-to-ts-autoscope`, default scope mode to `deep`. Never interpret a bare request to write or review code as this workflow.
 
 Read the selected profile completely before acting:
 
 - [ISSUE-WORKFLOW.md](ISSUE-WORKFLOW.md)
+- [BUG-FIX-WORKFLOW.md](BUG-FIX-WORKFLOW.md)
 - [IMPROVEMENT-WORKFLOW.md](IMPROVEMENT-WORKFLOW.md)
 - [JS-TO-TS-WORKFLOW.md](JS-TO-TS-WORKFLOW.md)
+- [JS-TO-TS-AUTOSCOPE-WORKFLOW.md](JS-TO-TS-AUTOSCOPE-WORKFLOW.md)
 
 Always read [QUALITY-GATES.md](QUALITY-GATES.md) and [ARTIFACT-CONTRACT.md](ARTIFACT-CONTRACT.md).
 
