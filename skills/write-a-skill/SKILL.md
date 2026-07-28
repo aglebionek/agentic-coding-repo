@@ -7,18 +7,21 @@ description: Create new agent skills with proper structure, progressive disclosu
 
 ## Process
 
-1. **Gather requirements** - ask user about:
+1. **Read governing guidance** - read the project's `AGENTS.md` and
+   `.agentic/ARCHITECTURE_GUIDELINES.md` when installed, or the repository's
+   canonical equivalent in a shared source tree.
+2. **Gather requirements** - ask user about:
    - What task/domain does the skill cover?
    - What specific use cases should it handle?
    - Does it need executable scripts or just instructions?
    - Any reference materials to include?
 
-2. **Draft the skill** - create:
+3. **Draft the skill** - create:
    - SKILL.md with concise instructions
    - Additional reference files if content exceeds 500 lines
    - Utility scripts if deterministic operations needed
 
-3. **Review with user** - present draft and ask:
+4. **Review with user** - present draft and ask:
    - Does this cover your use cases?
    - Anything missing or unclear?
    - Should any section be more/less detailed?
@@ -54,7 +57,7 @@ description: Brief description of capability. Use when [specific triggers].
 
 ## Advanced features
 
-[Link to separate files: See [REFERENCE.md](REFERENCE.md)]
+[Link to separate files when they exist, for example REFERENCE.md]
 ```
 
 ## Description Requirements
@@ -104,6 +107,11 @@ Split into separate files when:
 - SKILL.md exceeds 100 lines
 - Content has distinct domains (finance vs sales schemas)
 - Advanced features are rarely needed
+
+Keep `SKILL.md` as the public reading entrypoint: purpose and common workflow
+first, then links to detailed references or scripts. Each deeper file must hide
+meaningful complexity. Do not duplicate the complete shared architecture
+guideline inside a skill.
 
 ## Review Checklist
 

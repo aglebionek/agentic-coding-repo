@@ -1,57 +1,45 @@
 ---
 name: grow-docs
-description: Writes and expands an Obsidian knowledge vault at docs/obsidian/ for this repo. Creates clusters of brief, wikilinked notes from codebase exploration, then audits the vault for broken wikilinks and surfaces gaps. Use when user wants to document, expand, or map the codebase in Obsidian, or says "grow docs", "document X", "add obsidian docs", or "expand the vault".
+description: Maintains project documentation around stable responsibilities, including approachable explanations, technical contracts, navigation, links, and gap audits. Use when the user invokes grow-docs, asks to document or expand a responsibility, improve documentation navigation, or run a documentation link or gap pass.
 ---
 
-# grow-docs
+# Grow Docs
+
+Maintain the smallest coherent documentation cluster that makes a responsibility
+discoverable from overview to implementation.
 
 ## Workflow
 
-1. **Check the concept** — does it have a coherent identity an engineer would look up? (`auth`, `payments`, `grid` ✓ — `hooks`, `utils`, `helpers` ✗ — those belong inside the concepts they serve)
-2. **Establish intended purpose** — new concept notes require an approved purpose contract with `Applies to`, responsibility, required behavior, and forbidden behavior or non-goals; preserve existing approved contracts unless the user explicitly asks to change them; when purpose is unknown, report the gap and recommend `infer-purpose` instead of inferring it here
-3. **Explore** — grep/glob the code area; read `docs/obsidian/` for existing notes to link to; check `.aglebionek/docs/` for reference material
-4. **Write a cluster** — 2–5 brief notes (≤40 lines each); see [REFERENCE.md](REFERENCE.md) for note format and link style
-5. **Update indexes** — add wikilinks to the new notes in the relevant `_<concept>.md`
-6. **Audit gaps** — run the script below; surface results as "Gaps to fill next"
-7. **Report** — notes created + gaps list
+1. Read the repository's `AGENTS.md`. Read
+   `.agentic/ARCHITECTURE_GUIDELINES.md` when installed, or the repository's
+   canonical equivalent when working in its source tree.
+2. Discover the documentation profile from project instructions, its docs
+   root/index, and evident existing conventions. Preserve established paths and
+   Markdown/link formats. If no profile exists and creating one would be
+   material, ask before inventing it.
+3. Establish the responsibility or concept and its approved purpose. Preserve
+   approved contracts and decisions. Do not infer material intended behavior;
+   report missing authority instead of writing speculative documentation.
+4. Explore the public reading entrypoint, implementation, existing approachable
+   and technical docs, decisions, tests, and evidence.
+5. Choose the justified depth: approachable documentation only, technical
+   documentation only, or both cross-linked.
+6. Update the minimal coherent cluster around the responsibility. Include a
+   concrete input/output, state transition, or real-life example where useful.
+7. Update every necessary parent index so navigation remains continuous.
+8. Link approachable docs to the public code entrypoint and deeper technical
+   material. Link technical docs to code, decisions, tests, and evidence. Add a
+   code-entrypoint link back to docs only when project convention permits it.
+9. Run the format-appropriate audit in [REFERENCE.md](REFERENCE.md).
+10. Report changed documents, updated indexes, preserved canonical sources, and
+    deferred gaps.
 
-**Link pass** (run after several clusters land, or on request — "link pass", "enrich links"): scan notes for plain text that names an existing concept but isn't yet a wikilink; upgrade first occurrence per paragraph to `[[basename|text]]`; max 2–3 new links per note; skip code blocks and already-linked text; report each file touched.
+## Rules
 
----
-
-## Vault layout
-
-```
-docs/obsidian/
-├── _map.md                   ← root index
-├── frontend/  (= client/)    ├── backend/  (= server/)
-├── shared/    (cross-cutting) └── infra/   (Docker, CI, env)
-    └── <concept>/
-            ├── _<concept>.md     ← concept index (e.g. _editor.md, _auth.md)
-            └── <note>.md         (subfolder if concept > 5 notes)
-```
-
-Never put notes directly in a domain root. New domain → add to `_map.md`.
-
----
-
-## Gap audit
-
-```bash
-grep -roh '\[\[[^]]*\]\]' docs/obsidian/ \
-  | sed 's/^\[\[//;s/\]\]$//' | sed 's/|.*//' | sed 's/#.*//' | grep -v '^$' \
-  | sed 's|\.\./||g' | sort -u > /tmp/linked.txt
-find docs/obsidian/ -name '*.md' | sed 's|^docs/obsidian/||;s|\.md$||' | sort -u > /tmp/existing_paths.txt
-find docs/obsidian/ -name '*.md' | sed 's|.*/||;s|\.md$||' | sort -u > /tmp/existing_names.txt
-
-# path-qualified gaps
-comm -23 /tmp/linked.txt /tmp/existing_paths.txt | grep '/' | while read path; do
-  base=$(echo "$path" | sed 's|.*/||')
-  if [[ "$base" == _* ]] || ! grep -qx "$base" /tmp/existing_names.txt; then echo "$path"; fi
-done
-
-# short-name gaps
-comm -23 /tmp/linked.txt /tmp/existing_paths.txt | grep -v '/' | while read name; do
-  grep -qx "$name" /tmp/existing_names.txt || echo "$name"
-done
-```
+- Do not hardcode a documentation root, domain directory, or link syntax.
+- Do not force both documentation roles for every concept.
+- Mirror stable responsibilities, not individual source files.
+- Do not duplicate normative contracts into approachable docs.
+- Do not create speculative documentation for behavior that does not exist.
+- Keep one canonical source for each load-bearing claim and link other layers to
+  it.

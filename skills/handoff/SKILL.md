@@ -45,6 +45,22 @@ From the conversation so far, extract:
 - **Worktree setup** — worktree mode only:
   `./scripts/createWorktree.sh <BRANCH_NAME> <MODEL_NAME> "<TASK_DESCRIPTION>"`
 
+When they materially apply, also record:
+
+- **Architecture constraints** — governing shared/project guidance and the
+  responsibility boundaries the implementation must preserve.
+- **Public reading entrypoints** — existing or planned files where callers and
+  maintainers first encounter each changed responsibility.
+- **Documentation impact** — the active documentation profile, affected
+  approachable/technical material, indexes, and canonical sources.
+- **Canonical terminology** — shared or project glossary terms that must remain
+  consistent.
+- **Compatibility surfaces** — existing consumers, temporary facades, migration
+  order, and separately approved removals.
+
+Omit conditional fields that do not help the next session. Do not add empty
+ceremony to a simple task.
+
 Be exhaustive. The fresh session will have no memory of this conversation.
 
 ### 4. Save the plan

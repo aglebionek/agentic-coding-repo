@@ -1,87 +1,43 @@
-# grow-docs — Reference
+# Grow Docs Audit Reference
 
-## Note template
+Use the project's existing tools and link format. Do not introduce a new
+documentation system solely to run this audit.
 
-```md
-# Concept Title
+## Navigation
 
-One-sentence definition. ^concept-definition
+- Start at the documented root or index and follow links to every changed page.
+- Confirm each new page is reachable through all necessary parent indexes.
+- Confirm a reader can identify the responsibility's public reading entrypoint.
+- Confirm deeper technical material is discoverable from approachable material
+  when both roles exist.
 
-## Intended purpose
+## Links
 
-- Applies to: `<repository-relative path or symbol>`
-- Responsibility: <single coherent outcome>
-- Required behavior:
-  - <required behavior>
-- Forbidden behavior:
-  - <forbidden behavior or explicit non-goal>
+- Resolve every changed relative Markdown link from the file that contains it.
+- Validate project-specific links, anchors, or wiki links with the project's
+  established tooling when available.
+- Confirm code links point to the maintained public entrypoint rather than a
+  replaceable implementation detail unless the detail is the subject.
+- Prefer stable repository-relative links where the publishing system supports
+  them.
 
-## Key facts
+## Authority and depth
 
-- Fact one ^fact-one
-- Fact two
+- Identify the canonical source for every load-bearing contract or decision.
+- Flag duplicated normative claims that could drift.
+- Confirm approachable docs explain purpose and common use instead of restating
+  technical specifications.
+- Confirm technical docs link to relevant decisions, tests, and evidence.
+- Flag missing transitions where an overview names deeper behavior but provides
+  no route to its contract.
 
-## How it connects
+## Evidence
 
-- [[Related Concept A|how A relates here]]
-- [[Related Concept B#^specific-section|specific point in B]]
+Report:
 
-## See also
-
-[[Parent Domain Index]]
-```
-
-Add applicable invariants, inputs, outputs, state transitions, side effects, errors, and external contracts as further purpose bullets. Omit irrelevant dimensions instead of adding empty boilerplate.
-
----
-
-## Wikilink style guide
-
-| Intent | Syntax | Example |
-|---|---|---|
-| Link to a note | `[[Note Title\|display text]]` | `[[JWT Auth\|token validation]]` |
-| Link to a block | `[[Note Title#^ref\|display text]]` | `[[Auth Flow#^jwt-middleware\|the middleware]]` |
-| Link to a heading | `[[Note Title#Heading\|display text]]` | `[[Editor#State Machine\|state machine]]` |
-
-**Rules:**
-- Always use `|display text` — never expose raw note titles mid-sentence.
-- Add a `^anchor-id` to any paragraph you expect others to reference.
-- Anchor IDs are `kebab-case`, unique within the file.
-
----
-
-## Folder placement rules
-
-| Concept type | Domain folder | Example path |
-|---|---|---|
-| UI components, React state, editor, dashboard | `frontend/` | `frontend/editor/state-machine.md` |
-| API routes, services, DB models, jobs | `backend/` | `backend/auth/jwt.md` |
-| Concepts spanning both (e.g. data-model, error codes) | `shared/` | `shared/data-model/page-schema.md` |
-| Docker, CI, deployment, environment config | `infra/` | `infra/docker/dev-setup.md` |
-
-Each concept lives in a **folder** inside the domain, not as a loose file in the domain root.
-If a concept folder grows beyond 5 notes, split it into named subfolders.
-
----
-
-## Index format
-
-Each `_index.md` is a flat list of wikilinks with one-line descriptions:
-
-```md
-# Frontend
-
-- [[Editor]] — the visual page editor, state machine, and element selection
-- [[Dashboard]] — user project list, settings entry point
-- [[Grid System]] — layout engine used inside the editor
-```
-
-`_map.md` (root) links to each domain index:
-
-```md
-# Instago — Obsidian Map
-
-- [[frontend/_index|Frontend]] — UI, editor, dashboard
-- [[backend/_index|Backend]] — API, services, auth, payments
-- [[shared/_index|Shared]] — cross-cutting models and concepts
-```
+- audit commands or inspections performed;
+- broken or ambiguous links;
+- unreachable pages;
+- duplicated canonical claims;
+- missing public-entrypoint links;
+- deferred gaps and why they were not filled.

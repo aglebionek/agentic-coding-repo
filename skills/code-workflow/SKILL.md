@@ -38,15 +38,23 @@ Both modes require explicit user approval of the synthesized implementation plan
 
 ## Shared workflow
 
-1. Read applicable repository instructions and coding guidelines. Record revision and dirty state; preserve unrelated work.
+1. Read applicable repository instructions, coding guidelines, shared
+   architecture guidance when installed, and the project documentation profile.
+   Record revision and dirty state; preserve unrelated work.
 2. Establish the source request, exact code scope, approved purpose authority if any, acceptance criteria, exclusions, and verification baseline.
 3. Select only specialists justified by the profile and evidence. Read each selected skill and its required references completely before invoking it.
 4. Require valid, fresh reports before using their planners. Keep reports and plans read-only.
-5. Synthesize one work package and one implementation plan using the artifact contract. Preserve every finding disposition and specialist boundary.
+5. Synthesize one work package and one implementation plan using the artifact
+   contract. Preserve every finding disposition and specialist boundary. When
+   architecture or public contracts change, include justified documentation
+   impact, public reading entrypoints, and compatibility surfaces.
 6. Present the plan and stop for explicit approval. Approval of requirements, a report, or this workflow is not implementation approval.
 7. Implement only the approved plan. Pause at quality-gate stop conditions or newly discovered work outside the boundary.
 8. Run focused verification, then a skeptical current-changes audit. New corrective edits require a supplemental approved plan.
-9. Reconcile planned documentation against approved purpose. Report residual risks, deferred findings, checks, and unperformed external actions.
+9. Reconcile planned documentation against approved purpose and the active
+   documentation profile. Do not force documentation edits when the work has no
+   justified documentation impact. Report residual risks, deferred findings,
+   checks, and unperformed external actions.
 
 ## Constraints
 

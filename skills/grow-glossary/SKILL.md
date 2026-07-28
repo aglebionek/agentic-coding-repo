@@ -1,36 +1,33 @@
 ---
 name: grow-glossary
-description: Finds glossary-worthy terminology in the current conversation and session artifacts, diffs it against GLOSSARY.md, and reports only missing terms. Use at the end of a conversation, plan, or implementation when the user wants to grow the glossary, calcify terminology, or review missing glossary candidates.
+description: Finds glossary-worthy terms in the current conversation and session artifacts, compares them with shared and project glossaries, and reports only missing terminology. Use when the user wants to grow a glossary, calcify terminology, or review missing glossary candidates.
 ---
 
-# grow-glossary
-
-## Terms
-
-**Calcify**: promote unstable session vocabulary into stable repo terminology by deciding which terms deserve entries in `GLOSSARY.md`.
+# Grow Glossary
 
 ## Workflow
 
-1. Use the current conversation as the primary corpus.
-2. If the session created plan or note artifacts, read those too.
-3. Build a candidate list from terms that:
-   - repeat across the conversation or artifacts
-   - are used as if already understood
-   - conflict with existing wording
-   - are explicitly called out as important
-4. Exclude generic engineering words and one-off incidental phrases.
-5. Read `GLOSSARY.md` and compare each candidate against existing terms and definitions.
-6. Drop anything already covered or clearly synonymous with an existing glossary entry.
-7. Return only the missing terms.
+1. Use the current conversation as the primary corpus and read relevant plan or
+   note artifacts created during the session.
+2. Build candidates from terms that repeat, are used as established vocabulary,
+   conflict with existing wording, or are explicitly important.
+3. Exclude generic engineering words and incidental phrases.
+4. Read `.agentic/AGENTIC_GLOSSARY.md` when present and the project's
+   `GLOSSARY.md` when present. In this shared source repository, read
+   `shared/AGENTIC_GLOSSARY.md` and root `GLOSSARY.md`.
+5. Treat shared terms as covered. Drop candidates already defined or clearly
+   synonymous with an existing entry.
+6. Report only project-specific terms or genuinely missing generic terms. Mark
+   which glossary should own each genuinely missing term.
 
 ## Output
 
-Return a flat list. For each item include:
+Return a flat list containing:
 
-- `term`
-- `why it seems glossary-worthy`
-- `evidence/context`
+- `term`;
+- `suggested owner` (`shared` or `project`);
+- `why it seems glossary-worthy`;
+- `evidence/context`.
 
-Do not edit `GLOSSARY.md`.
-Do not show already covered terms, near matches, or synonym notes.
-If no missing terms remain after the diff, say so directly.
+Do not edit a glossary. Do not copy the shared glossary into a project glossary.
+If no missing terms remain, say so directly.

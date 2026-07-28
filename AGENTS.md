@@ -1,43 +1,138 @@
-## Base
-This repository root is the orchestration layer for a unified platform monorepo, named **Platform**.
+# Agentic Coding Repo
+
+## Purpose
+
+This repository is the source for reusable agent instructions, skills,
+architecture and coding guidelines, shared workflow terminology, and the
+bootstrap tooling that distributes them to other projects.
+
+Root files govern maintenance of this repository. They are not templates for a
+target project's root files.
 
 ## Rules
-- ALWAYS use grill-me-with-docs if you're unsure about something.
+
+- ALWAYS use `grill-me-with-docs` if requirements or intended behavior are
+  materially uncertain.
 - NEVER start implementing a plan before user approval.
 - NEVER commit anything unless asked to.
-- NEVER delete worktrees until asked to.
+- NEVER delete worktrees unless asked to.
+- Preserve the shared-base/project-overlay ownership boundary:
+  - reusable managed assets belong in `shared/` and `skills/`;
+  - installed shared assets belong under `.agentic/`;
+  - a target project's root instructions, glossary, docs, and local skills are
+    project-owned and must not be overwritten.
+- Keep shared material project-agnostic. Project-domain rules and automated
+  guardrails remain in the project that owns them.
+- Treat compatibility removal as a separate, explicitly approved change.
 
 ## Model resources
 
-### Docs
-**list docs here**
+- `shared/BASE_AGENT_GUIDELINES.md` — compact operating guidance for installed
+  projects.
+- `shared/ARCHITECTURE_GUIDELINES.md` — canonical shared architecture and
+  documentation principles.
+- `shared/CODING_GUIDELINES.md` — canonical reusable JavaScript and TypeScript
+  coding guidance.
+- `shared/AGENTIC_GLOSSARY.md` — canonical project-agnostic workflow terms.
+- `skills/` — reusable skill sources. Read the matching `SKILL.md` completely
+  before using or changing a skill.
+- `notes/AI/Key Ideas/` — research context; shared guidelines remain the
+  operational authority.
+- `README.md` — installation, ownership, migration, and adoption guide.
 
-### Skills
-When you want to invoke a skill, read the appropriate skill file.
-- `./skills/answer-and-stop/SKILL.md`: Answer the user's question and stop. Use when the user wants a direct answer without further questioning, or types a&s.
-- `./skills/bug-hunt/report/SKILL.md`: Hunts for evidenced runtime bugs, edge cases, invalid states, and uncovered correctness risks. Use only when the user invokes "bug-hunt report <file-or-directory>", "bug-hunt report codebase", or "bug-hunt report current changes".
-- `./skills/bug-hunt/planner/SKILL.md`: Creates one read-only correction plan from a bug-hunt report. Use only when the user invokes "bug-hunt planner" or "bug-hunt autoplan" with a report.
-- `./skills/caveman/SKILL.md`: Use when user says "caveman mode", "talk like caveman", "use caveman", or invokes /caveman.
-- `./skills/code-smells/report/SKILL.md`: Identifies Fowler catalog code smells in an explicit source target. Use only when the user invokes "code-smells report <file-or-directory>" or "code-smells report codebase".
-- `./skills/code-smells/planner/SKILL.md`: Creates one read-only refactoring plan from a valid code-smells report. Use only when the user invokes "code-smells planner", "code-smells autoplan", or "code-smells autoplan-force" with a report.
-- `./skills/coding-standards-accordance/report/SKILL.md`: Audits JavaScript and TypeScript against `CODING_GUIDELINES.md`. Use only when the user invokes "coding-standards-accordance report <file-or-directory>", "coding-standards-accordance report codebase", or "coding-standards-accordance report current changes".
-- `./skills/coding-standards-accordance/planner/SKILL.md`: Creates one read-only correction plan from a coding-standards-accordance report. Use only when the user invokes "coding-standards-accordance planner" or "coding-standards-accordance autoplan" with a report.
-- `./skills/code-workflow/SKILL.md`: Orchestrates evidence, planning, approved implementation, validation, and documentation for issue work, codebase improvement, and JavaScript-to-TypeScript conversion. Use when the user invokes "code-workflow issue", "code-workflow improve", or "code-workflow js-to-ts", optionally with "manual" or "autorun".
-- `./skills/create-gh-issue/SKILL.md`: Uses gh cli to create an issue in the repo. Use when asked to create an issue.
-- `./skills/create-report-planner-skill/SKILL.md`: Creates or updates nested read-only report/planner skill pairs. Use only when the user explicitly says "create report/planner skill" or asks to update an existing report/planner skill pair.
-- `./skills/grill-me-with-docs/SKILL.md`: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
-- `./skills/grow-docs/SKILL.md`: Expands documentation. Use when user mentions "grow-docs".
-- `./skills/grow-glossary/SKILL.md`: Finds glossary-worthy terms from the current conversation and session artifacts, diffs them against `GLOSSARY.md`, and reports only missing terms. Use at the end of a conversation, plan, or implementation when the user wants to grow the glossary, calcify terminology, or review missing glossary candidates.
-- `./skills/give-commit-message/SKILL.md`: Produces a concise commit message for completed coding work, emphasizing why the change was made. Use when the user says "GCM", "give commit message", "give me a commit message", or asks for a commit message.
-- `./skills/handoff/SKILL.md`: Crystallise the current conversation into a saved implementation plan and give the user an exact fresh-session prompt. Use when the user says "handoff", "handoff branch", "handoff worktree", "save plan", or "start in new session".
-- `./skills/improve-codebase-architecture/SKILL.md`: Identify and present opportunities to deepen the architecture of the codebase for better locality and leverage. Use when user wants to improve codebase architecture, or says "improve architecture", "deepen architecture", "refactor for locality", or "refactor for leverage".
-- `./skills/js-to-ts/report/SKILL.md`: Analyzes JavaScript or JSX targets for a safe, guideline-compliant TypeScript conversion. Use only when the user explicitly invokes "js-to-ts report".
-- `./skills/js-to-ts/planner/SKILL.md`: Creates a read-only TypeScript conversion plan from a valid js-to-ts report. Use only when the user explicitly invokes "js-to-ts planner" or "js-to-ts autoplan".
-- `./skills/list-dont-modify/SKILL.md`: When invoked, only list what the user asked for, without making any file changes or trying to fix anything. Use when user says "list don't modify", "list only" or "LDM".
-- `./skills/purpose-adherence/report/SKILL.md`: Audits code and contract surfaces against an approved Obsidian purpose contract. Use only when the user explicitly invokes "purpose-adherence report".
-- `./skills/purpose-adherence/planner/SKILL.md`: Creates one read-only action plan from a valid purpose-adherence report. Use only when the user explicitly invokes "purpose-adherence planner" or "purpose-adherence autoplan".
-- `./skills/review-intent-and-coverage/SKILL.md`: Use when user asks for a review of current changes, to validate intent, or to check whether tests and coverage are sufficient.
-- `./skills/testable-module/SKILL.md`: Guides refactoring code as a testable module with a clear pure-function API. Follows a TDD flow: agree on contract → write tests → implement. Use when user wants to make code testable, extract a module API, says "make testable", "module API", or "rewrite as module".
-- `./skills/validate-current-changes/SKILL.md`: Performs a skeptical, read-only audit of all current local changes for bad logic, invalid states, unnecessary complexity, regressions, and misleading test coverage. Use when user says "validate current changes", "audit this diff", "review without fixing", or asks to look for bad logic or overcomplication.
-- `./skills/worktree/SKILL.md`: A set of instructions and scripts for creating and managing git worktrees for this repository. Use when user wants to create a worktree for agent sessions/code changes/plan implementation.
-- `./skills/write-a-skill/SKILL.md`: Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.
+## Skills
+
+Read the referenced `SKILL.md` completely after selecting a skill.
+
+- `skills/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
+  with no follow-up questions or types `a&s`.
+- `skills/bug-hunt/planner/SKILL.md` — Use only when the user invokes
+  `bug-hunt planner` or `bug-hunt autoplan` with a bug-hunt report.
+- `skills/bug-hunt/report/SKILL.md` — Use only when the user invokes
+  `bug-hunt report` for a file, directory, current changes, or the codebase.
+- `skills/caveman/SKILL.md` — Use when the user says `caveman mode`,
+  `talk like caveman`, `use caveman`, or `/caveman`.
+- `skills/code-smells/planner/SKILL.md` — Use only when the user invokes
+  `code-smells planner`, `code-smells autoplan`, or
+  `code-smells autoplan-force` with a report.
+- `skills/code-smells/report/SKILL.md` — Use only when the user invokes
+  `code-smells report` for a file, directory, or the codebase.
+- `skills/code-workflow/SKILL.md` — Use when the user invokes `code-workflow`
+  with the `issue`, `bug-fix`, `improve`, `js-to-ts`, or `js-to-ts-autoscope`
+  profile.
+- `skills/coding-standards-accordance/planner/SKILL.md` — Use only when the user
+  invokes `coding-standards-accordance planner` or
+  `coding-standards-accordance autoplan` with a report.
+- `skills/coding-standards-accordance/report/SKILL.md` — Use only when the user
+  invokes `coding-standards-accordance report` for JavaScript or TypeScript
+  files, a directory, current changes, or the codebase.
+- `skills/create-gh-issue/SKILL.md` — Use when the user asks to create, draft,
+  or turn work into a GitHub issue.
+- `skills/create-gh-pr/SKILL.md` — Use when the user asks to create or draft a
+  GitHub pull request.
+- `skills/create-report-planner-skill/SKILL.md` — Use only when the user asks
+  to create or update a report/planner skill pair.
+- `skills/domain-model/SKILL.md` — Use when the user wants to stress-test a
+  plan against the project's domain language and documented decisions.
+- `skills/give-commit-message/SKILL.md` — Use when the user says `GCM`,
+  `give commit message`, or otherwise asks for a commit message.
+- `skills/grill-me/SKILL.md` — Use when the user asks to be grilled or wants to
+  stress-test a plan or design through questioning.
+- `skills/grill-me-with-docs/SKILL.md` — Use when the user asks to be grilled
+  with docs or wants settled design decisions preserved in documentation.
+- `skills/grow-docs/SKILL.md` — Use when the user invokes `grow-docs`, asks to
+  document or expand a responsibility, improve documentation navigation, or run
+  a documentation link or gap pass.
+- `skills/grow-glossary/SKILL.md` — Use when the user asks to grow a glossary,
+  calcify terminology, or review missing glossary candidates.
+- `skills/handoff/SKILL.md` — Use when the user says `handoff`,
+  `handoff branch`, `handoff worktree`, `save plan`, or asks to continue in a
+  new session.
+- `skills/handoff-to-worktree/SKILL.md` — Use only when an existing reference
+  explicitly invokes `handoff-to-worktree`; otherwise use `handoff` worktree
+  mode.
+- `skills/implement-strategy/SKILL.md` — Use when the user points to a Markdown
+  strategy and asks for a plan to implement one of its steps.
+- `skills/improve-codebase-architecture/SKILL.md` — Use when the user asks to
+  improve architecture, deepen modules, increase locality or leverage,
+  consolidate tightly coupled modules, or improve testability and navigability.
+- `skills/js-to-ts/planner/SKILL.md` — Use only when the user invokes
+  `js-to-ts planner` or `js-to-ts autoplan` with a valid report.
+- `skills/js-to-ts/report/SKILL.md` — Use only when the user invokes
+  `js-to-ts report` with JavaScript or JSX files or symbols.
+- `skills/js-to-ts-autoscope/planner/SKILL.md` — Use only when the user invokes
+  `js-to-ts-autoscope planner` or `js-to-ts-autoscope autoplan` with a report.
+- `skills/js-to-ts-autoscope/report/SKILL.md` — Use only when the user invokes
+  `js-to-ts-autoscope report` with a seed file or small seed set.
+- `skills/list-dont-modify/SKILL.md` — Use when the user says
+  `list don't modify`, `list only`, or `LDM`.
+- `skills/purpose-adherence/planner/SKILL.md` — Use only when the user invokes
+  `purpose-adherence planner` or `purpose-adherence autoplan` with a valid
+  report.
+- `skills/purpose-adherence/report/SKILL.md` — Use only when the user invokes
+  `purpose-adherence report` with code targets and an approved purpose contract.
+- `skills/review-changes/SKILL.md` — Use when the user points to changes and
+  asks for review feedback.
+- `skills/review-intent-and-coverage/SKILL.md` — Use when the user asks whether
+  current changes match intended behavior or whether tests and coverage are
+  sufficient.
+- `skills/testable-module/SKILL.md` — Use when the user asks to make code
+  testable, extract a module API, or rewrite code as a module.
+- `skills/validate-current-changes/SKILL.md` — Use when the user asks to
+  validate or audit current changes without fixing them, especially for bad
+  logic, invalid states, regressions, or overcomplication.
+- `skills/worktree/SKILL.md` — Use when the user asks to create or manage a Git
+  worktree for agent sessions, code changes, or plan implementation.
+- `skills/write-a-skill/SKILL.md` — Use when the user asks to create, write,
+  build, or update an agent skill.
+
+## Documentation profile
+
+- Approachable documentation: `README.md`
+- Technical guidance: `shared/`
+- Supporting research: `notes/`
+- Documentation mirrors stable responsibilities rather than individual files.
+
+When modifying the distribution model, validate it against a disposable target
+with sentinel project-owned files. Never test the network bootstrap against a
+real project.

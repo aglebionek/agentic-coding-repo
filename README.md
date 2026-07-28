@@ -1,79 +1,151 @@
 # Agentic Coding Repo
 
-A personal repo for agentic coding workflows: agent instructions, reusable skills, and research notes for working with AI coding agents.
+A source repository for reusable coding-agent guidelines, skills, terminology,
+and distribution tooling.
 
-## What's in here
+## Shared base and project overlay
 
-### `AGENTS.md`
-Repository-level instructions for agent sessions. It lists the active repo rules, stable docs, and the local skills an agent can invoke.
+The repository uses an explicit ownership model:
 
-### `GLOSSARY.md`
-Stable terminology for this repo and its workflows. Use it to keep repeated concepts consistent across sessions, plans, and docs.
+- The **shared base** contains project-agnostic guidance and reusable skills
+  maintained here.
+- The **project overlay** contains a target project's purpose, domain rules,
+  documentation conventions, glossary, local skills, and automated guardrails.
 
-### `fetch-agent-assets.sh`
-Bootstrap script that downloads `AGENTS.md`, `GLOSSARY.md`, and `skills/` from this repository into the current directory.
+Updating the shared base replaces only the managed `.agentic/` directory. It
+does not edit or delete the project overlay.
 
-### `notes/`
-Obsidian-style notes from AI coding research, including maps for key ideas, terminology, sources, and pasted image assets.
+## Source tree
 
-### `skills/`
-Reusable agent skills. Each skill is a directory with a `SKILL.md` entrypoint and, when needed, supporting references or scripts.
+```text
+agentic-coding-repo/
+├── AGENTS.md
+├── README.md
+├── GLOSSARY.md
+├── fetch-agent-assets.sh
+├── shared/
+│   ├── BASE_AGENT_GUIDELINES.md
+│   ├── ARCHITECTURE_GUIDELINES.md
+│   ├── CODING_GUIDELINES.md
+│   └── AGENTIC_GLOSSARY.md
+├── skills/
+└── notes/
+```
 
-| Skill | Description |
-|---|---|
-| `answer-and-stop` | Answer directly and stop when the user wants no follow-up. |
-| `bug-hunt-planner` | Convert a bug-hunt report into one read-only correction and verification plan. |
-| `bug-hunt-report` | Hunt for evidenced runtime bugs, edge cases, invalid states, and uncovered correctness risks. |
-| `caveman` | Switch to an ultra-compressed communication style. |
-| `code-smells-planner` | Convert a valid code-smells report into one read-only refactoring plan. |
-| `code-smells-report` | Identify Fowler catalog code smells in an explicit source target. |
-| `code-workflow` | Orchestrate evidence, planning, implementation, validation, and documentation for issue work, codebase improvement, and JavaScript-to-TypeScript conversion. |
-| `coding-standards-accordance-planner` | Convert a coding-standards-accordance report into one read-only correction plan. |
-| `coding-standards-accordance-report` | Audit JavaScript and TypeScript against the governing `CODING_GUIDELINES.md`. |
-| `create-gh-issue` | Create GitHub issues with the `gh` CLI and repository issue templates. |
-| `create-gh-pr` | Create GitHub pull requests with the `gh` CLI and the repository PR template. |
-| `create-report-planner-skill` | Create or update nested, read-only report/planner skill pairs. |
-| `domain-model` | Stress-test a plan against domain language and record context or ADR decisions. |
-| `give-commit-message` | Produce a concise commit message for completed coding work. |
-| `grill-me` | Interview the user about a plan or design until the open decisions are resolved. |
-| `grow-docs` | Expand an Obsidian documentation vault with short linked notes and gap audits. |
-| `grow-glossary` | Find glossary-worthy missing terms from the current conversation or artifacts. |
-| `handoff` | Crystallise a conversation into a plan for a fresh session. |
-| `handoff-to-worktree` | Legacy compatibility entry for worktree handoffs; prefer `handoff` worktree mode. |
-| `implement-strategy` | Turn a strategy-file step into an implementation plan and handoff. |
-| `improve-codebase-architecture` | Surface architecture-deepening opportunities for locality, leverage, and testability. |
-| `js-to-ts-planner` | Convert a valid JS-to-TS report into one read-only TypeScript conversion plan. |
-| `js-to-ts-report` | Analyze JavaScript or JSX targets for a safe, guideline-compliant TypeScript conversion. |
-| `list-dont-modify` | List what the user asked for without making any file changes or trying to fix anything. |
-| `purpose-adherence-planner` | Convert a valid purpose-adherence report into one actionable correction and verification plan. |
-| `purpose-adherence-report` | Audit code and contract surfaces against an approved Obsidian purpose contract. |
-| `review-changes` | Review pointed-to changes for plan adherence, quality, completeness, and docs/tests. |
-| `review-intent-and-coverage` | Inspect current changes, validate intended behavior, then verify or expand tests. |
-| `testable-module` | Refactor toward a pure-function module API using a TDD flow. |
-| `validate-current-changes` | Skeptically audit current local changes for logic errors, invalid states, unnecessary complexity, regressions, and misleading tests. |
-| `worktree` | Guide creation and use of per-session git worktrees. |
-| `write-a-skill` | Create new skills with the expected structure, metadata, and supporting resources. |
+- Root `AGENTS.md` and `GLOSSARY.md` describe this repository itself.
+- `shared/` is the canonical source for distributable guidelines and generic
+  terminology.
+- `skills/` contains distributable shared skills.
+- `notes/` contains supporting research, not installed operational authority.
+- Root `CODING_GUIDELINES.md` is a compatibility pointer to the canonical file
+  under `shared/`.
 
-### Code workflow
+## Installed tree
 
-`code-workflow` is the main orchestration skill for multi-step coding work. Use it when a request needs coordinated evidence gathering, specialist reports, planning, approved implementation, validation, and documentation rather than a single direct edit.
+Running the installer in a target project produces:
 
-It supports three profiles:
-- `code-workflow issue <issue-number-or-url> [manual|autorun]`
-- `code-workflow improve <file-or-directory> [manual|autorun]`
-- `code-workflow js-to-ts <files-or-symbols> [manual|autorun]`
+```text
+target-project/
+├── AGENTS.md                 # project-owned
+├── GLOSSARY.md               # project-owned
+├── skills/                   # project-owned local skills
+└── .agentic/
+    ├── BASE_AGENT_GUIDELINES.md
+    ├── ARCHITECTURE_GUIDELINES.md
+    ├── CODING_GUIDELINES.md
+    ├── AGENTIC_GLOSSARY.md
+    └── skills/               # centrally managed shared skills
+```
 
-`manual` mode resolves material decisions one at a time with `grill-me`, then stops for explicit implementation approval. `autorun` mode makes safe, evidence-backed decisions without questions, but still stops for approval before implementation and at any quality-gate stop condition.
+The installer owns all of `.agentic/` and replaces that directory on each
+successful update. It never manages root `AGENTS.md`,
+`CODING_GUIDELINES.md`, `GLOSSARY.md`, `skills/`, documentation, or other
+project files.
 
-The workflow coordinates specialist skills such as `bug-hunt-report`, `code-smells-report`, `coding-standards-accordance-report`, `js-to-ts-report`, their planners, `testable-module`, `grow-docs`, and `validate-current-changes`. It does not replace those skills; it preserves their artifacts and finding IDs while turning them into one approved work package.
+## Install or update
 
-The `caveman`, `grill-me`, `domain-model`, `improve-codebase-architecture`, and `write-a-skill` skills were copied from [mattpocock/skills](https://github.com/mattpocock/skills).
+From the root of the target project:
 
-Some skills refer to files that are expected to exist in the target project where the skill is used, such as GitHub issue templates, a pull request template, `docs/obsidian/`, `CONTEXT.md`, ADR directories, or worktree scripts.
+```bash
+curl -fsSL https://raw.githubusercontent.com/aglebionek/agentic-coding-repo/main/fetch-agent-assets.sh | bash
+```
 
-### Potential additions
-- Triage skill - would require a set of defined github label.
-- More multishot components - workflows/skills (from triage to issue review, tests, implementation, docs update to the final PR, with intermediate code reviews and checks, adhering to the coding guidelines like module testability).
-- More strict and interconnected core guidelines (e.g. "always write tests first (red/green)", "always update docs at the end", "read the related docs from...", "make sure the module is testable") and skills to enforce them.
-- More defined worktree lifecycle management (e.g. automatic cleanup of old worktrees, reminders to delete worktree after session ends, etc.). Alternatively, use something else than git worktrees? Docker containers maybe?
-- Docs expansions - deepen the glossary and related note graph now that the shared glossary/backlog flow exists.
+The script downloads the configured repository branch, validates every required
+source asset, stages the complete managed tree, and then replaces `.agentic/`.
+It prints each installed managed asset.
+
+For local validation or development, bypass the download:
+
+```bash
+AGENTIC_SOURCE_DIR=/path/to/agentic-coding-repo \
+AGENTIC_TARGET_DIR=/path/to/disposable-target \
+bash fetch-agent-assets.sh
+```
+
+`AGENTIC_SOURCE_DIR` must point to a source tree containing `shared/` and
+`skills/`. `AGENTIC_TARGET_DIR` defaults to the current directory.
+
+## Opt in from a project
+
+Installation does not modify project instructions. Add an adoption section to
+the target project's own `AGENTS.md`:
+
+```md
+## Shared agent resources
+
+Read and follow:
+
+- `.agentic/BASE_AGENT_GUIDELINES.md`
+- `.agentic/ARCHITECTURE_GUIDELINES.md`
+- `.agentic/CODING_GUIDELINES.md` when applicable
+- `.agentic/AGENTIC_GLOSSARY.md`
+
+Shared skills live under `.agentic/skills/`. Project-specific skills live under
+`skills/`.
+```
+
+The project's instructions decide how shared defaults interact with local
+authority.
+
+## Skills and glossaries
+
+Shared skills are updated as one managed set under `.agentic/skills/`.
+Project-specific skills remain under root `skills/`; the installer neither
+moves nor compares them automatically.
+
+Shared workflow terms belong in `.agentic/AGENTIC_GLOSSARY.md`. A project's
+domain language belongs in its root `GLOSSARY.md`. Projects should reference the
+shared glossary rather than copying it into their local glossary.
+
+## Documentation profiles
+
+Generic documentation skills discover conventions from the project instead of
+assuming one layout:
+
+1. Read the project `AGENTS.md`.
+2. Read the documentation root or index it identifies.
+3. Use declared approachable and technical roots and formats.
+4. Preserve an evident equivalent structure.
+5. Ask before inventing a material profile when none exists.
+
+Projects may use `docs/overview/` and `docs/technical/`, but those are only
+defaults. Project-specific link formats, purpose contracts, and automated
+architecture or documentation guardrails remain local.
+
+## Migration from the legacy installer
+
+Older versions copied root `AGENTS.md`, `CODING_GUIDELINES.md`, `GLOSSARY.md`,
+and the entire root `skills/` directory into target projects. The current
+installer does not delete, move, merge, or overwrite those legacy paths.
+
+After installing `.agentic/`:
+
+1. Add the opt-in section to the project-owned `AGENTS.md`.
+2. Review legacy root copies manually.
+3. Keep project-specific content in root files and `skills/`.
+4. Remove obsolete legacy copies only through a separate, project-approved
+   cleanup.
+
+When a root coding-guidelines file or local skills tree exactly matches the
+current shared source, the installer reports it as a possible legacy copy for
+manual review. It never removes it.

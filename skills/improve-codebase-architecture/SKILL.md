@@ -32,7 +32,12 @@ This skill is _informed_ by the project's domain model — `CONTEXT.md` and any 
 
 ### 1. Explore
 
-Read existing documentation first:
+Read the project's `AGENTS.md` and
+`.agentic/ARCHITECTURE_GUIDELINES.md` when installed, or the repository's
+canonical shared guideline when working in its source tree. Discover the active
+documentation profile and public reading entrypoints.
+
+Read existing domain and decision documentation when present:
 
 - `CONTEXT.md` (or `CONTEXT-MAP.md` + each `CONTEXT.md` in a multi-context repo)
 - Relevant ADRs in `docs/adr/` (and any context-scoped `docs/adr/` directories)
@@ -46,8 +51,16 @@ Then use the Agent tool with `subagent_type=Explore` to walk the codebase. Don't
 - Where have pure functions been extracted just for testability, but the real bugs hide in how they're called (no **locality**)?
 - Where do tightly-coupled modules leak across their seams?
 - Which parts of the codebase are untested, or hard to test through their current interface?
+- Where do directory or documentation structures make humans or agents guess
+  where a responsibility starts?
+- Where would responsibility-first grouping or an explicit public reading
+  entrypoint improve progressive disclosure?
 
 Apply the **deletion test** to anything you suspect is shallow: would deleting it concentrate complexity, or just move it? A "yes, concentrates" is the signal you want.
+
+Treat shared architecture guidance as design guidance, not a rigid filesystem
+linter. Preserve the deep-module vocabulary and judge structure in the context
+of the project's ecosystem and responsibilities.
 
 ### 2. Present candidates
 

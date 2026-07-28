@@ -12,6 +12,7 @@ Maintain one work package throughout the workflow:
 | Scope | Exact editable boundary, inspected context, exclusions, and directly coupled surfaces |
 | Purpose | Governing approved notes and clauses, or explicit absence and its consequence |
 | Acceptance | Observable required outcomes, preservation requirements, and non-goals |
+| Documentation | Active profile and justified impact, including public reading entrypoints and canonical sources when applicable |
 | Evidence | Complete specialist report identifiers, validity, freshness, and artifact locations |
 | Decisions | User-approved or autonomous decisions with evidence and tradeoffs |
 | Plan | One ordered implementation path mapped to source requirements and specialist IDs |
@@ -61,6 +62,8 @@ The plan must state:
 - source acceptance criteria and specialist IDs addressed by each step
 - files, symbols, ordered edits, dependencies, and preservation requirements
 - tests, types, callers, configuration, and documentation affected
+- applicable architecture constraints, public reading entrypoints, and
+  compatibility or migration surfaces when they materially apply
 - focused proof for each acceptance criterion and finding
 - bug regression proof for every fixed `BH-*` finding, including justified non-test proof when applicable
 - risks, execution stop conditions, deferred findings, and external actions

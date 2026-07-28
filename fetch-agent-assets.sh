@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_URL="https://github.com/aglebionek/agentic-coding-repo"
-BRANCH="main"
+REPO_URL="${AGENTIC_REPO_URL:-https://github.com/aglebionek/agentic-coding-repo}"
+BRANCH="${AGENTIC_BRANCH:-main}"
+DEST_DIR="${AGENTIC_TARGET_DIR:-$(pwd)}"
 
 require_cmd() {
     command -v "$1" >/dev/null 2>&1 || {
@@ -11,48 +12,99 @@ require_cmd() {
     }
 }
 
-require_cmd curl
-require_cmd tar
 require_cmd mktemp
 require_cmd cp
-require_cmd find
+require_cmd mv
+require_cmd rm
+require_cmd cmp
+require_cmd diff
 
-DEST_DIR="$(pwd)"
 TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "$TMP_DIR"' EXIT
+trap 'rm -rf -- "$TMP_DIR"' EXIT
 
-ARCHIVE_URL="$REPO_URL/archive/refs/heads/$BRANCH.tar.gz"
-ARCHIVE_PATH="$TMP_DIR/repo.tar.gz"
-EXTRACT_DIR="$TMP_DIR/extracted"
+resolve_source_root() {
+    if [[ -n "${AGENTIC_SOURCE_DIR:-}" ]]; then
+        printf '%s\n' "$AGENTIC_SOURCE_DIR"
+        return
+    fi
 
-echo "Downloading from $ARCHIVE_URL"
-curl -fsSL "$ARCHIVE_URL" -o "$ARCHIVE_PATH"
+    require_cmd curl
+    require_cmd tar
+    require_cmd find
 
-mkdir -p "$EXTRACT_DIR"
-tar -xzf "$ARCHIVE_PATH" -C "$EXTRACT_DIR"
+    local archive_url="$REPO_URL/archive/refs/heads/$BRANCH.tar.gz"
+    local archive_path="$TMP_DIR/repo.tar.gz"
+    local extract_dir="$TMP_DIR/extracted"
+    local extracted_root
 
-ROOT_DIR="$(find "$EXTRACT_DIR" -mindepth 1 -maxdepth 1 -type d | head -n 1)"
-if [[ -z "$ROOT_DIR" ]]; then
-echo "Failed to locate extracted repo contents." >&2
-exit 1
-fi
+    echo "Downloading shared agent assets from $archive_url" >&2
+    curl -fsSL "$archive_url" -o "$archive_path"
+    mkdir -p "$extract_dir"
+    tar -xzf "$archive_path" -C "$extract_dir"
 
-copy_if_exists() {
-    local src="$1"
-    local dest="$2"
+    extracted_root="$(find "$extract_dir" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+    if [[ -z "$extracted_root" ]]; then
+        echo "Failed to locate extracted repository contents." >&2
+        exit 1
+    fi
 
-    if [[ -e "$src" ]]; then
-        rm -rf "$dest"
-        cp -R "$src" "$dest"
-        echo "Copied $(basename "$dest")"
-    else
-        echo "Skipping missing path: $src" >&2
+    printf '%s\n' "$extracted_root"
+}
+
+require_source_asset() {
+    local source_path="$1"
+
+    if [[ ! -e "$source_path" ]]; then
+        echo "Missing required shared source asset: $source_path" >&2
+        exit 1
     fi
 }
 
-copy_if_exists "$ROOT_DIR/AGENTS.md" "$DEST_DIR/AGENTS.md"
-copy_if_exists "$ROOT_DIR/CODING_GUIDELINES.md" "$DEST_DIR/CODING_GUIDELINES.md"
-copy_if_exists "$ROOT_DIR/GLOSSARY.md" "$DEST_DIR/GLOSSARY.md"
-copy_if_exists "$ROOT_DIR/skills" "$DEST_DIR/skills"
+SOURCE_ROOT="$(resolve_source_root)"
+SOURCE_ROOT="$(cd "$SOURCE_ROOT" && pwd)"
+DEST_DIR="$(cd "$DEST_DIR" && pwd)"
 
-echo "Done. Files copied into: $DEST_DIR"
+SHARED_SOURCE="$SOURCE_ROOT/shared"
+SKILLS_SOURCE="$SOURCE_ROOT/skills"
+
+required_files=(
+    "BASE_AGENT_GUIDELINES.md"
+    "ARCHITECTURE_GUIDELINES.md"
+    "CODING_GUIDELINES.md"
+    "AGENTIC_GLOSSARY.md"
+)
+
+for file_name in "${required_files[@]}"; do
+    require_source_asset "$SHARED_SOURCE/$file_name"
+done
+require_source_asset "$SKILLS_SOURCE"
+
+STAGED_MANAGED_DIR="$TMP_DIR/managed"
+mkdir -p "$STAGED_MANAGED_DIR"
+
+for file_name in "${required_files[@]}"; do
+    cp "$SHARED_SOURCE/$file_name" "$STAGED_MANAGED_DIR/$file_name"
+done
+cp -R "$SKILLS_SOURCE" "$STAGED_MANAGED_DIR/skills"
+
+MANAGED_DIR="$DEST_DIR/.agentic"
+rm -rf -- "$MANAGED_DIR"
+mv "$STAGED_MANAGED_DIR" "$MANAGED_DIR"
+
+for file_name in "${required_files[@]}"; do
+    echo "Installed .agentic/$file_name"
+done
+echo "Installed .agentic/skills/"
+
+if [[ -f "$DEST_DIR/CODING_GUIDELINES.md" ]] &&
+   cmp -s "$DEST_DIR/CODING_GUIDELINES.md" "$SHARED_SOURCE/CODING_GUIDELINES.md"; then
+    echo "Legacy root CODING_GUIDELINES.md matches the shared asset; review it manually."
+fi
+
+if [[ -d "$DEST_DIR/skills" ]] &&
+   diff -qr "$DEST_DIR/skills" "$SKILLS_SOURCE" >/dev/null 2>&1; then
+    echo "Legacy root skills/ matches the shared assets; review it manually."
+fi
+
+echo "Shared agent assets installed in: $MANAGED_DIR"
+echo "Opt in by referencing .agentic resources from the project's own AGENTS.md."

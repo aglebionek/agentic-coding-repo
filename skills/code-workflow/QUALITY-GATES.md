@@ -3,7 +3,8 @@
 ## Gate 1 — Coherent intake
 
 - Resolve the source request to one repository and a credible, explicit code target.
-- Record applicable `AGENTS.md`, `CODING_GUIDELINES.md`, revision, and dirty state.
+- Record applicable `AGENTS.md`, coding and architecture guidance,
+  documentation profile, revision, and dirty state.
 - Separate unrelated local changes and pre-existing check failures.
 - State observable acceptance criteria, preservation requirements, and non-goals.
 
@@ -11,7 +12,8 @@ Stop when the target, ownership, or intended outcome is materially ambiguous. Ma
 
 ## Gate 2 — Purpose and contract
 
-- Search applicable Obsidian documentation for an approved `## Intended purpose` whose `Applies to` covers the target.
+- Search the project's configured documentation for an approved purpose contract
+  whose scope covers the target.
 - Never infer purpose from implementation, tests, issue text, comments, names, or history.
 - Reconcile proposed behavior with approved purpose and external contracts.
 
@@ -47,7 +49,10 @@ Create a supplemental plan for newly necessary edits. Do not disguise scope expa
 2. Confirm every fixed `BH-*` finding has its mapped regression proof, including the exact command or inspection result. A fixed bug without approved durable proof remains incomplete unless the plan already justified a non-test proof.
 3. Use [validate-current-changes](../validate-current-changes/SKILL.md) for a skeptical, read-only audit of logic, states, integration, complexity, and test credibility.
 4. Use [review-intent-and-coverage](../review-intent-and-coverage/SKILL.md) when user confirmation of diff intent is needed. Any test or code edits it proposes require an approved supplemental plan.
-5. Use [grow-docs](../grow-docs/SKILL.md) only for planned documentation backed by approved purpose. Do not use it to invent a missing purpose contract.
+5. Use [grow-docs](../grow-docs/SKILL.md) only for justified, planned
+   documentation backed by approved purpose and the active documentation
+   profile. Do not use it to invent a missing purpose contract or force docs for
+   a change with no documentation impact.
 6. Report findings before fixes. Residual findings remain deferred until the user approves a correction plan.
 
 ## Gate 7 — External actions
