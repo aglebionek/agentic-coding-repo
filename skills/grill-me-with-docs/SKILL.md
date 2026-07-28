@@ -15,9 +15,12 @@ During the conversation:
 - preserve approved purpose and existing canonical decisions;
 - do not invoke a write workflow when intended purpose or documentation
   authority is missing;
-- use `grow-docs` only when settled decisions justify a coherent documentation
-  update;
+- supply each settled decision, rationale, scope, and authority to `grow-docs`
+  when it justifies a coherent documentation update;
 - use `grow-glossary` when stable terminology may be missing.
 
-Record settled decisions in the appropriate project-owned documentation. Do not
-copy shared guidance or shared glossary entries into project docs.
+This skill owns eliciting and settling decisions. `grow-docs` owns placing those
+approved decisions in the project's canonical technical or decision format,
+updating overview/technical navigation, and preserving links. Do not duplicate
+the decision across documentation layers or copy shared guidance or glossary
+entries into project docs.

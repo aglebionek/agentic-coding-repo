@@ -82,7 +82,7 @@ Read the referenced `SKILL.md` completely after selecting a skill.
   with docs or wants settled design decisions preserved in documentation.
 - `skills/grow-docs/SKILL.md` — Use when the user invokes `grow-docs`, asks to
   document or expand a responsibility, improve documentation navigation, or run
-  a documentation link or gap pass.
+  a documentation link or gap pass, or record an already-approved decision.
 - `skills/grow-glossary/SKILL.md` — Use when the user asks to grow a glossary,
   calcify terminology, or review missing glossary candidates.
 - `skills/handoff/SKILL.md` — Use when the user says `handoff`,
