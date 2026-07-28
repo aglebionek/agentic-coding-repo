@@ -88,11 +88,6 @@ Read the referenced `SKILL.md` completely after selecting a skill.
 - `skills/handoff/SKILL.md` — Use when the user says `handoff`,
   `handoff branch`, `handoff worktree`, `save plan`, or asks to continue in a
   new session.
-- `skills/handoff-to-worktree/SKILL.md` — Use only when an existing reference
-  explicitly invokes `handoff-to-worktree`; otherwise use `handoff` worktree
-  mode.
-- `skills/implement-strategy/SKILL.md` — Use when the user points to a Markdown
-  strategy and asks for a plan to implement one of its steps.
 - `skills/improve-codebase-architecture/SKILL.md` — Use when the user asks to
   improve architecture, deepen modules, increase locality or leverage,
   consolidate tightly coupled modules, or improve testability and navigability.
@@ -111,8 +106,6 @@ Read the referenced `SKILL.md` completely after selecting a skill.
   report.
 - `skills/purpose-adherence/report/SKILL.md` — Use only when the user invokes
   `purpose-adherence report` with code targets and an approved purpose contract.
-- `skills/review-changes/SKILL.md` — Use when the user points to changes and
-  asks for review feedback.
 - `skills/review-intent-and-coverage/SKILL.md` — Use when the user asks whether
   current changes match intended behavior or whether tests and coverage are
   sufficient.

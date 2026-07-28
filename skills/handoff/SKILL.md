@@ -11,7 +11,7 @@ You are closing out a planning conversation and handing it off to a fresh implem
 
 - **Default** — `handoff`, `save plan`, or similar with no branch/worktree mode. Save the plan and prompt a fresh session to implement it.
 - **Branch** — `handoff branch` or any request for a fresh agent to create a branch first. Save the plan and prompt the next agent to create the branch before implementation.
-- **Worktree** — `handoff worktree`, `handoff to worktree`, or legacy `handoff-to-worktree`. Save the plan and prompt the next agent to create/use a worktree before implementation.
+- **Worktree** — `handoff worktree` or `handoff to worktree`. Save the plan and prompt the next agent to create/use a worktree before implementation.
 
 ## Steps
 
@@ -76,7 +76,7 @@ Use this wrapper for every mode:
 🚀 HANDOFF READY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Open a new chat and paste:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   <MODE_PROMPT>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
