@@ -77,6 +77,46 @@ export function updatePrice(order: Order): void {
 }
 ```
 
+## Progressive-Disclosure Architecture
+
+Structure code so a reader or caller encounters the smallest complete mental
+model first and only needs deeper detail for less common work.
+
+- The public entry point should reveal the domain intent, common control flow,
+  inputs, outputs, effects, and meaningful failure modes without requiring the
+  reader to inspect implementation mechanics.
+- Give the common case a small, complete API with safe defaults. Reveal advanced
+  configuration, extension points, and lower-level primitives only to callers
+  that need them.
+- Arrange implementation layers from policy to mechanism. High-level modules
+  should describe what happens; deeper modules should own how parsing,
+  orchestration, persistence, framework integration, or vendor interaction
+  happens.
+- Keep complexity behind the module that owns it. Callers should not coordinate
+  internal steps, lifecycle ordering, state fields, dependencies, or recovery
+  behavior that the module can encapsulate.
+- Organize files and documentation in the same order: purpose and contract first,
+  common usage next, exceptional behavior after that, and implementation detail
+  last.
+- Preserve escape hatches when real advanced use cases require them, but keep them
+  explicit and separate from the default path.
+- Do not confuse progressive disclosure with fragmentation. Each layer must hide
+  meaningful complexity or establish a useful contract. Avoid pass-through
+  wrappers, one-use abstractions, and file splitting that merely forces readers to
+  chase the behavior.
+- Never hide correctness-critical constraints, destructive effects, security
+  implications, or failure modes that a caller needs to make a safe decision.
+
+Use these questions when designing and reviewing a module:
+
+1. Can a maintainer understand the common behavior from the public entry point
+   without reading its implementation?
+2. Can a caller use the common case without learning advanced concepts?
+3. Does each deeper layer reveal useful capability while preserving the simpler
+   layer above it?
+4. If a layer were removed, would its complexity leak into callers? If not, the
+   layer may be unnecessary.
+
 ## Functional Core And Effectful Boundaries
 
 - Put decisions, transformations, validation, filtering, and calculations in pure

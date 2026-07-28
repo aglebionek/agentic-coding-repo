@@ -1,36 +1,16 @@
 ## Base
 This repository root is the orchestration layer for a unified platform monorepo, named **Platform**.
 
-The current directory structure is as follows:
-- `./compose/`: Contains docker-compose files for different environments.
-- `./docs-internal/`: Internal documentation for the platform.
-- `./instago-app`: The main application codebase for Instago - a website builder platform.
-- `./instago-auth`: Authentication service for Instago.
-- `./instago-telemetry`: Telemetry service for Instago.
-- `./packages`: Shared packages and libraries used across different services.
-- `./skills/`: A collection of skills that can be used by AI agents to perform
-
-## Environments
-### Local
-Hosts all services under .local, like app.instago.local or auth.instago.local.
-### Dev
-Hosts all services under .dev domain. Currently instago.dev and leadme.dev.
-### Ai
-Hosts all services under .ai domain. Currently instago.ai and leadme.ai. Additionally, instago-domains serves websites via *.instago.page.
-
 ## Rules
-- ALWAYS use grill-me if you're unsure about something.
+- ALWAYS use grill-me-with-docs if you're unsure about something.
 - NEVER start implementing a plan before user approval.
 - NEVER commit anything unless asked to.
 - NEVER delete worktrees until asked to.
+
 ## Model resources
 
 ### Docs
-#### Instago docs
-- `./instago-docs/`:
-
-#### Obsidian docs
-- `./instago-app/docs/obsidian/`: Obsidian documentation for Instago
+**list docs here**
 
 ### Skills
 When you want to invoke a skill, read the appropriate skill file.
@@ -45,7 +25,7 @@ When you want to invoke a skill, read the appropriate skill file.
 - `./skills/code-workflow/SKILL.md`: Orchestrates evidence, planning, approved implementation, validation, and documentation for issue work, codebase improvement, and JavaScript-to-TypeScript conversion. Use when the user invokes "code-workflow issue", "code-workflow improve", or "code-workflow js-to-ts", optionally with "manual" or "autorun".
 - `./skills/create-gh-issue/SKILL.md`: Uses gh cli to create an issue in the repo. Use when asked to create an issue.
 - `./skills/create-report-planner-skill/SKILL.md`: Creates or updates nested read-only report/planner skill pairs. Use only when the user explicitly says "create report/planner skill" or asks to update an existing report/planner skill pair.
-- `./skills/grill-me/SKILL.md`: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
+- `./skills/grill-me-with-docs/SKILL.md`: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
 - `./skills/grow-docs/SKILL.md`: Expands documentation. Use when user mentions "grow-docs".
 - `./skills/grow-glossary/SKILL.md`: Finds glossary-worthy terms from the current conversation and session artifacts, diffs them against `GLOSSARY.md`, and reports only missing terms. Use at the end of a conversation, plan, or implementation when the user wants to grow the glossary, calcify terminology, or review missing glossary candidates.
 - `./skills/give-commit-message/SKILL.md`: Produces a concise commit message for completed coding work, emphasizing why the change was made. Use when the user says "GCM", "give commit message", "give me a commit message", or asks for a commit message.
