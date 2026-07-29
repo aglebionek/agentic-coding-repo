@@ -68,6 +68,7 @@ SHARED_SOURCE="$SOURCE_ROOT/shared"
 SKILLS_SOURCE="$SOURCE_ROOT/skills"
 
 required_files=(
+    "AGENTS_TEMPLATE.md"
     "BASE_AGENT_GUIDELINES.md"
     "ARCHITECTURE_GUIDELINES.md"
     "CODING_GUIDELINES.md"
@@ -97,6 +98,13 @@ for file_name in "${required_files[@]}"; do
 done
 echo "Installed .agentic/skills/"
 
+if [[ ! -e "$DEST_DIR/AGENTS.md" ]]; then
+    echo "No project-owned AGENTS.md found. Create one from the managed template:"
+    echo "  cp .agentic/AGENTS_TEMPLATE.md AGENTS.md"
+else
+    echo "Project-owned AGENTS.md preserved. Managed template: .agentic/AGENTS_TEMPLATE.md"
+fi
+
 if [[ -f "$DEST_DIR/CODING_GUIDELINES.md" ]] &&
    cmp -s "$DEST_DIR/CODING_GUIDELINES.md" "$SHARED_SOURCE/CODING_GUIDELINES.md"; then
     echo "Legacy root CODING_GUIDELINES.md matches the shared asset; review it manually."
@@ -108,4 +116,4 @@ if [[ -d "$DEST_DIR/skills" ]] &&
 fi
 
 echo "Shared agent assets installed in: $MANAGED_DIR"
-echo "Opt in by referencing .agentic resources from the project's own AGENTS.md."
+echo "Fill project-specific placeholders only in the root AGENTS.md copy."

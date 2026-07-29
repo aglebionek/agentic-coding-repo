@@ -24,6 +24,7 @@ agentic-coding-repo/
 ├── GLOSSARY.md
 ├── fetch-agent-assets.sh
 ├── shared/
+│   ├── AGENTS_TEMPLATE.md
 │   ├── BASE_AGENT_GUIDELINES.md
 │   ├── ARCHITECTURE_GUIDELINES.md
 │   ├── CODING_GUIDELINES.md
@@ -61,6 +62,7 @@ target-project/
 ├── GLOSSARY.md               # project-owned
 ├── skills/                   # project-owned local skills
 └── .agentic/
+    ├── AGENTS_TEMPLATE.md
     ├── BASE_AGENT_GUIDELINES.md
     ├── ARCHITECTURE_GUIDELINES.md
     ├── CODING_GUIDELINES.md
@@ -69,10 +71,10 @@ target-project/
     └── skills/               # centrally managed shared skills
 ```
 
-The installer owns all of `.agentic/` and replaces that directory on each
-successful update. It never manages root `AGENTS.md`,
-`CODING_GUIDELINES.md`, `GLOSSARY.md`, `skills/`, documentation, or other
-project files.
+The installer owns all of `.agentic/`, including `AGENTS_TEMPLATE.md`, and
+replaces that directory on each successful update. It never manages root
+`AGENTS.md`, `CODING_GUIDELINES.md`, `GLOSSARY.md`, `skills/`, documentation,
+or other project files.
 
 ## Install or update
 
@@ -97,26 +99,24 @@ bash fetch-agent-assets.sh
 `AGENTIC_SOURCE_DIR` must point to a source tree containing `shared/` and
 `skills/`. `AGENTIC_TARGET_DIR` defaults to the current directory.
 
-## Opt in from a project
+## Create project instructions
 
-Installation does not modify project instructions. Add an adoption section to
-the target project's own `AGENTS.md`:
+Installation does not create or modify project instructions. For a new project
+without root instructions, copy the managed template:
 
-```md
-## Shared agent resources
-
-Read and follow:
-
-- `.agentic/BASE_AGENT_GUIDELINES.md`
-- `.agentic/ARCHITECTURE_GUIDELINES.md`
-- `.agentic/TESTING_GUIDELINES.md` when executable behavior may change
-- `.agentic/CODING_GUIDELINES.md` when applicable
-- `.agentic/AGENTIC_GLOSSARY.md`
-
-Shared skills live under `.agentic/skills/`. Project-specific skills live under
-`skills/`.
+```bash
+cp .agentic/AGENTS_TEMPLATE.md AGENTS.md
 ```
 
+Fill the purpose, project rules, documentation profile, validation commands,
+glossary locations, and optional local-skill entries in the root copy. It
+already contains the installed `.agentic/` resource paths and the complete
+public shared-skill catalog.
+
+The root `AGENTS.md` is project-owned and survives every managed update.
+`.agentic/AGENTS_TEMPLATE.md` is shared and replaceable; changes made directly
+to it are discarded by the next install. Existing projects should adopt useful
+template sections manually rather than overwriting their root instructions.
 The project's instructions decide how shared defaults interact with local
 authority.
 
@@ -167,7 +167,8 @@ installer does not delete, move, merge, or overwrite those legacy paths.
 
 After installing `.agentic/`:
 
-1. Add the opt-in section to the project-owned `AGENTS.md`.
+1. Copy or manually adopt `.agentic/AGENTS_TEMPLATE.md` into the project-owned
+   root `AGENTS.md`.
 2. Review legacy root copies manually.
 3. Keep project-specific content in root files and `skills/`.
 4. Remove obsolete legacy copies only through a separate, project-approved

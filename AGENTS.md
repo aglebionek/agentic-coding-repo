@@ -27,6 +27,8 @@ target project's root files.
 
 ## Model resources
 
+- `shared/AGENTS_TEMPLATE.md` — copyable project-owned instruction template
+  installed under `.agentic/`.
 - `shared/BASE_AGENT_GUIDELINES.md` — compact operating guidance for installed
   projects.
 - `shared/ARCHITECTURE_GUIDELINES.md` — canonical shared architecture and
@@ -44,6 +46,7 @@ target project's root files.
 ## Skills
 
 Read the referenced `SKILL.md` completely after selecting a skill.
+Load only skills whose trigger matches the request.
 
 ### Code workflow
 These skills are groupings of related skills that implement a complete code workflow.

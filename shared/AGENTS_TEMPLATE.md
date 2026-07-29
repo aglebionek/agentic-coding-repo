@@ -1,0 +1,123 @@
+# <Project Name>
+
+## Purpose
+
+<Describe why this project exists, who it serves, and the outcomes it owns.>
+
+## Project rules
+
+- ALWAYS use `grill-me-with-docs` if requirements or intended behavior are
+  materially uncertain.
+- NEVER start implementing a plan before user approval.
+- NEVER commit anything unless asked to.
+- NEVER delete worktrees unless asked to.
+- <Add project-specific safety, security, and access constraints.>
+- <Add compatibility, migration, and destructive-action constraints.>
+- <Add domain or architecture rules that shared guidance must not override.>
+- <Add project-specific external-action authorization rules when needed.>
+
+## Shared agent resources
+
+Read and follow:
+
+- `.agentic/BASE_AGENT_GUIDELINES.md`
+- `.agentic/ARCHITECTURE_GUIDELINES.md` for architecture or documentation work
+- `.agentic/TESTING_GUIDELINES.md` when executable behavior may change
+- `.agentic/CODING_GUIDELINES.md` when changing JavaScript or TypeScript
+- `.agentic/AGENTIC_GLOSSARY.md` for shared workflow terminology
+
+Project instructions and approved project decisions override optional shared
+defaults. Keep project-owned instructions, documentation, glossaries, and local
+skills outside `.agentic/`.
+
+## Skills
+
+Read the referenced `SKILL.md` completely after selecting a skill. Load only
+skills whose trigger matches the request.
+
+### Code workflow
+These skills are groupings of related skills that implement a complete code workflow.
+
+- `.agentic/skills/code-workflow/SKILL.md` — Use when the user invokes
+  `code-workflow` with the `issue`, `bug-fix`, `improve`, `js-to-ts`, or
+  `js-to-ts-autoscope` profile.
+
+### Interaction
+
+- `.agentic/skills/interaction/answer-and-stop/SKILL.md` — Use when the user
+  wants a direct answer with no follow-up questions or types `a&s`.
+- `.agentic/skills/interaction/caveman/SKILL.md` — Use when the user says
+  `caveman mode`, `talk like caveman`, `use caveman`, or `/caveman`.
+- `.agentic/skills/interaction/grill-me/SKILL.md` — Use when the user asks to
+  be grilled or wants to stress-test a plan or design through questioning.
+- `.agentic/skills/interaction/list-dont-modify/SKILL.md` — Use when the user
+  says `list don't modify`, `list only`, or `LDM`.
+
+### Knowledge
+
+- `.agentic/skills/knowledge/domain-model/SKILL.md` — Use when the user wants
+  to stress-test a plan against the project's domain language and documented
+  decisions.
+- `.agentic/skills/knowledge/grill-me-with-docs/SKILL.md` — Use when the user
+  asks to be grilled with docs or wants settled design decisions preserved in
+  documentation.
+- `.agentic/skills/knowledge/grow-docs/SKILL.md` — Use when the user invokes
+  `grow-docs`, asks to document or expand a responsibility, improve
+  documentation navigation, run a documentation link or gap pass, or record an
+  already-approved decision.
+- `.agentic/skills/knowledge/grow-glossary/SKILL.md` — Use when the user asks
+  to grow a glossary, calcify terminology, or review missing glossary
+  candidates.
+
+### Delivery
+
+- `.agentic/skills/delivery/create-gh-issue/SKILL.md` — Use when the user asks
+  to create, draft, or turn work into a GitHub issue.
+- `.agentic/skills/delivery/create-gh-pr/SKILL.md` — Use when the user asks to
+  create or draft a GitHub pull request.
+- `.agentic/skills/delivery/give-commit-message/SKILL.md` — Use when the user
+  says `GCM`, `give commit message`, or otherwise asks for a commit message.
+- `.agentic/skills/delivery/handoff/SKILL.md` — Use when the user says
+  `handoff`, `handoff branch`, `handoff worktree`, `save plan`, or asks to
+  continue in a new session.
+- `.agentic/skills/delivery/worktree/SKILL.md` — Use when the user asks to
+  create or manage a Git worktree for agent sessions, code changes, or plan
+  implementation.
+
+### Skill authoring
+
+- `.agentic/skills/skill-authoring/create-code-workflow-specialist/SKILL.md` —
+  Use when the user explicitly asks to create or update a code-workflow
+  specialist.
+- `.agentic/skills/skill-authoring/write-a-skill/SKILL.md` — Use when the user
+  asks to create, write, build, or update an agent skill.
+
+## Documentation profile
+
+- Approachable documentation: `<path or none>`
+- Technical documentation: `<path or none>`
+- Supporting research or notes: `<path or none>`
+- Canonical decision format/location: `<path, convention, or none>`
+- Documentation organization:
+  `<describe the stable responsibilities mirrored by docs>`
+
+## Project validation
+
+- Tests: `<command or not applicable>`
+- Lint: `<command or not applicable>`
+- Type checking: `<command or not applicable>`
+- Build: `<command or not applicable>`
+- Additional required checks: `<commands or none>`
+
+## Project glossary
+
+- Project terminology: `<path such as GLOSSARY.md, or none>`
+- Domain/context documentation: `<paths or none>`
+
+## Local skills
+
+Project-specific skills live under root `skills/`, outside the managed
+`.agentic/` directory.
+
+- `<skills/project-skill/SKILL.md>` — <Describe its trigger, or remove this
+  placeholder when the project has no local skills.>
