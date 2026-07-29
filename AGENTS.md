@@ -74,9 +74,6 @@ Read the referenced `SKILL.md` completely after selecting a skill.
 - `skills/handoff/SKILL.md` — Use when the user says `handoff`,
   `handoff branch`, `handoff worktree`, `save plan`, or asks to continue in a
   new session.
-- `skills/improve-codebase-architecture/SKILL.md` — Use when the user asks to
-  improve architecture, deepen modules, increase locality or leverage,
-  consolidate tightly coupled modules, or improve testability and navigability.
 - `skills/list-dont-modify/SKILL.md` — Use when the user says
   `list don't modify`, `list only`, or `LDM`.
 - `skills/worktree/SKILL.md` — Use when the user asks to create or manage a Git

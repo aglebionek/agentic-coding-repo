@@ -27,11 +27,17 @@ Emit the work package in conversation unless the user requests a path. Do not wr
 
 Apply the [specialist contract](specialists/SPECIALIST-CONTRACT.md).
 
-1. Keep each report and plan intact and attributable. Reference `BH-*`, `CS-*`, `CSA-*`, `PA-*`, `JT-*`, and `JTA-*` IDs exactly.
+1. Keep each report and plan intact and attributable. Reference `BH-*`, `CS-*`,
+   `CSA-*`, `PA-*`, `ARCH-*`, `JT-*`, and `JTA-*` IDs exactly.
 2. A synthesized plan must disposition every finding accepted from every input plan. Never silently drop, rename, or merge findings.
 3. Preserve each specialist's confidence, severity or reach, validity, scope, preservation rules, and stop conditions. Do not compare unlike severity schemes.
 4. Probable findings retain their verification gates. They cannot become implementation steps until the named proof confirms them.
 5. `Valid: false`, material staleness, or incompatible scopes block synthesis from that artifact. Record recovery and rerun the specialist instead.
+
+Architecture findings retain their own reach and confidence fields; do not
+convert them into another specialist's severity system. Preserve the compared
+designs, selected structure, authority, consumer inventory, compatibility
+strategy, and interactive decisions from an architecture plan.
 
 ## Bug regression proof
 

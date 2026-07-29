@@ -20,12 +20,20 @@ independently from evidence:
 - [Code smells](../specialists/code-smells/REPORT.md) for demonstrated Fowler catalog maintenance effects
 - [Coding standards accordance](../specialists/coding-standards-accordance/REPORT.md) for JS/TS deviations from `CODING_GUIDELINES.md`
 - [Purpose adherence](../specialists/purpose-adherence/REPORT.md) for code and contract surfaces covered by approved purpose
+- [Architecture](../specialists/architecture/REPORT.md) for explicit
+  architecture, depth, locality, leverage, facade, navigability, or public
+  entrypoint requests, or when initial exploration evidences multi-module
+  structural friction
 
 Use [grow-docs](../../grow-docs/SKILL.md) when documentation is the requested outcome or approved implementation changes make existing notes incomplete. Grow-docs is not a purpose-discovery mechanism.
 
 Use each selected report's matching internal planner in `manual` or `autorun`
 mode. A forced code-smell boundary crossing requires explicit user approval;
 general autorun never implies it.
+
+Architecture is stricter: autorun may run its read-only report, but the first
+confirmed `ARCH-*` finding stops autorun before planning. Continue through the
+architecture planner only in manual mode with interactive design decisions.
 
 ## Consolidate and plan
 
