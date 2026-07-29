@@ -5,7 +5,9 @@ description: Orchestrates evidence, planning, implementation, validation, and do
 
 # Code Workflow
 
-Coordinate existing specialist skills; never reproduce or weaken their rules. Preserve specialist artifacts and finding IDs through one approved work package.
+Provide one public facade over internal evidence, planning, implementation,
+validation, and documentation modules. Preserve specialist artifacts and
+finding IDs through one approved work package.
 
 ## Invocation
 
@@ -21,13 +23,16 @@ Default workflow mode to `manual`. For `js-to-ts-autoscope`, default scope mode 
 
 Read the selected profile completely before acting:
 
-- [ISSUE-WORKFLOW.md](ISSUE-WORKFLOW.md)
-- [BUG-FIX-WORKFLOW.md](BUG-FIX-WORKFLOW.md)
-- [IMPROVEMENT-WORKFLOW.md](IMPROVEMENT-WORKFLOW.md)
-- [JS-TO-TS-WORKFLOW.md](JS-TO-TS-WORKFLOW.md)
-- [JS-TO-TS-AUTOSCOPE-WORKFLOW.md](JS-TO-TS-AUTOSCOPE-WORKFLOW.md)
+- [ISSUE.md](profiles/ISSUE.md)
+- [BUG-FIX.md](profiles/BUG-FIX.md)
+- [IMPROVEMENT.md](profiles/IMPROVEMENT.md)
+- [JS-TO-TS.md](profiles/JS-TO-TS.md)
+- [JS-TO-TS-AUTOSCOPE.md](profiles/JS-TO-TS-AUTOSCOPE.md)
 
-Always read [QUALITY-GATES.md](QUALITY-GATES.md) and [ARTIFACT-CONTRACT.md](ARTIFACT-CONTRACT.md).
+Always read the [quality gates](quality/QUALITY-GATES.md),
+[artifact contract](ARTIFACT-CONTRACT.md), [specialist
+contract](specialists/SPECIALIST-CONTRACT.md), and [routing
+table](specialists/ROUTING.md).
 
 ## Modes
 
@@ -45,7 +50,9 @@ Both modes require explicit user approval of the synthesized implementation plan
    `shared/TESTING_GUIDELINES.md`). Record revision and dirty state; preserve
    unrelated work.
 2. Establish the source request, exact code scope, approved purpose authority if any, acceptance criteria, exclusions, and verification baseline.
-3. Select only specialists justified by the profile and evidence. Read each selected skill and its required references completely before invoking it.
+3. Select only specialists justified by the profile and routing evidence. Read
+   each selected internal report, planner, template, and required local
+   reference completely before using it.
 4. Require valid, fresh reports before using their planners. Keep reports and plans read-only.
 5. Synthesize one work package and one implementation plan using the artifact
    contract. Preserve every finding disposition and specialist boundary. When
@@ -53,7 +60,9 @@ Both modes require explicit user approval of the synthesized implementation plan
    impact, public reading entrypoints, and compatibility surfaces.
 6. Present the plan and stop for explicit approval. Approval of requirements, a report, or this workflow is not implementation approval.
 7. Implement only the approved plan. Pause at quality-gate stop conditions or newly discovered work outside the boundary.
-8. Run focused verification, then a skeptical current-changes audit. New corrective edits require a supplemental approved plan.
+8. Run focused verification, then the skeptical
+   [current-changes audit](quality/CURRENT-CHANGES-AUDIT.md). New corrective
+   edits require a supplemental approved plan.
 9. Reconcile planned documentation against approved purpose and the active
    documentation profile. Do not force documentation edits when the work has no
    justified documentation impact. Report residual risks, deferred findings,

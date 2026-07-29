@@ -1,4 +1,0 @@
-interface:
-  display_name: "Validate Current Changes"
-  short_description: "Audit local changes without modifying them"
-  default_prompt: "Use $validate-current-changes to audit the current local changes for logic, complexity, and coverage problems without fixing anything."

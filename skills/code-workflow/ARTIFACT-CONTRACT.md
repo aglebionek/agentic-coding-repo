@@ -25,6 +25,8 @@ Emit the work package in conversation unless the user requests a path. Do not wr
 
 ## Specialist artifact rules
 
+Apply the [specialist contract](specialists/SPECIALIST-CONTRACT.md).
+
 1. Keep each report and plan intact and attributable. Reference `BH-*`, `CS-*`, `CSA-*`, `PA-*`, `JT-*`, and `JTA-*` IDs exactly.
 2. A synthesized plan must disposition every finding accepted from every input plan. Never silently drop, rename, or merge findings.
 3. Preserve each specialist's confidence, severity or reach, validity, scope, preservation rules, and stop conditions. Do not compare unlike severity schemes.
@@ -38,8 +40,9 @@ Apply the shared `TESTING_GUIDELINES.md` as the canonical testing policy.
 
 - Fixed confirmed findings, such as `BH-Fn`, require a specific regression test, focused reproduction check, or explicitly justified non-test proof.
 - Fixed probable findings, such as verified `BH-Pn`, require the pre-fix confirmation gate first, then the same regression-proof requirement as confirmed findings.
-- Prefer repository-native tests at the smallest credible level. Use integration, contract, type-level, migration, or reproduction checks when they prove the trigger and invariant more directly than a unit test.
-- If no durable test is reasonable, the plan must state why, name the alternate proof, and preserve that exception through implementation and completion reporting.
+- Select the proof level and any justified alternate proof under the shared
+  testing guideline, then preserve the decision through implementation and
+  completion reporting.
 
 ## Authority and conflict resolution
 

@@ -36,7 +36,9 @@ agentic-coding-repo/
 - Root `AGENTS.md` and `GLOSSARY.md` describe this repository itself.
 - `shared/` is the canonical source for distributable guidelines and generic
   terminology.
-- `skills/` contains distributable shared skills.
+- `skills/` contains distributable shared skills. `skills/code-workflow/` is a
+  deep public facade whose profiles, specialists, quality checks, and guidance
+  remain internal to that workflow.
 - `notes/` contains supporting research, not installed operational authority.
 - Root `CODING_GUIDELINES.md` is a compatibility pointer to the canonical file
   under `shared/`.
@@ -120,6 +122,10 @@ Shared skills are updated as one managed set under `.agentic/skills/`.
 Project-specific skills remain under root `skills/`; the installer neither
 moves nor compares them automatically.
 
+Use the public `code-workflow` profiles for issue work, bug fixes, improvement,
+and JavaScript-to-TypeScript conversion. Its report/planner specialists and
+current-changes audit are internal modules, not independently invocable skills.
+
 Shared workflow terms belong in `.agentic/AGENTIC_GLOSSARY.md`. A project's
 domain language belongs in its root `GLOSSARY.md`. Projects should reference the
 shared glossary rather than copying it into their local glossary.
@@ -152,6 +158,14 @@ After installing `.agentic/`:
 3. Keep project-specific content in root files and `skills/`.
 4. Remove obsolete legacy copies only through a separate, project-approved
    cleanup.
+
+Older shared versions advertised standalone report/planner pairs,
+`testable-module`, `validate-current-changes`, and
+`review-intent-and-coverage`. Those entrypoints were intentionally removed.
+Use the matching `code-workflow` profile; its facade now owns specialist
+routing, contract and fixture planning, and final diff auditing. External
+automation that invoked the retired standalone skills must migrate atomically
+to a `code-workflow` invocation.
 
 When a root coding-guidelines file or local skills tree exactly matches the
 current shared source, the installer reports it as a possible legacy copy for

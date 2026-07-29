@@ -47,32 +47,17 @@ Read the referenced `SKILL.md` completely after selecting a skill.
 
 - `skills/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
   with no follow-up questions or types `a&s`.
-- `skills/bug-hunt/planner/SKILL.md` — Use only when the user invokes
-  `bug-hunt planner` or `bug-hunt autoplan` with a bug-hunt report.
-- `skills/bug-hunt/report/SKILL.md` — Use only when the user invokes
-  `bug-hunt report` for a file, directory, current changes, or the codebase.
 - `skills/caveman/SKILL.md` — Use when the user says `caveman mode`,
   `talk like caveman`, `use caveman`, or `/caveman`.
-- `skills/code-smells/planner/SKILL.md` — Use only when the user invokes
-  `code-smells planner`, `code-smells autoplan`, or
-  `code-smells autoplan-force` with a report.
-- `skills/code-smells/report/SKILL.md` — Use only when the user invokes
-  `code-smells report` for a file, directory, or the codebase.
 - `skills/code-workflow/SKILL.md` — Use when the user invokes `code-workflow`
   with the `issue`, `bug-fix`, `improve`, `js-to-ts`, or `js-to-ts-autoscope`
   profile.
-- `skills/coding-standards-accordance/planner/SKILL.md` — Use only when the user
-  invokes `coding-standards-accordance planner` or
-  `coding-standards-accordance autoplan` with a report.
-- `skills/coding-standards-accordance/report/SKILL.md` — Use only when the user
-  invokes `coding-standards-accordance report` for JavaScript or TypeScript
-  files, a directory, current changes, or the codebase.
 - `skills/create-gh-issue/SKILL.md` — Use when the user asks to create, draft,
   or turn work into a GitHub issue.
 - `skills/create-gh-pr/SKILL.md` — Use when the user asks to create or draft a
   GitHub pull request.
-- `skills/create-report-planner-skill/SKILL.md` — Use only when the user asks
-  to create or update a report/planner skill pair.
+- `skills/skill-authoring/create-code-workflow-specialist/SKILL.md` — Use when
+  the user explicitly asks to create or update a code-workflow specialist.
 - `skills/domain-model/SKILL.md` — Use when the user wants to stress-test a
   plan against the project's domain language and documented decisions.
 - `skills/give-commit-message/SKILL.md` — Use when the user says `GCM`,
@@ -92,29 +77,8 @@ Read the referenced `SKILL.md` completely after selecting a skill.
 - `skills/improve-codebase-architecture/SKILL.md` — Use when the user asks to
   improve architecture, deepen modules, increase locality or leverage,
   consolidate tightly coupled modules, or improve testability and navigability.
-- `skills/js-to-ts/planner/SKILL.md` — Use only when the user invokes
-  `js-to-ts planner` or `js-to-ts autoplan` with a valid report.
-- `skills/js-to-ts/report/SKILL.md` — Use only when the user invokes
-  `js-to-ts report` with JavaScript or JSX files or symbols.
-- `skills/js-to-ts-autoscope/planner/SKILL.md` — Use only when the user invokes
-  `js-to-ts-autoscope planner` or `js-to-ts-autoscope autoplan` with a report.
-- `skills/js-to-ts-autoscope/report/SKILL.md` — Use only when the user invokes
-  `js-to-ts-autoscope report` with a seed file or small seed set.
 - `skills/list-dont-modify/SKILL.md` — Use when the user says
   `list don't modify`, `list only`, or `LDM`.
-- `skills/purpose-adherence/planner/SKILL.md` — Use only when the user invokes
-  `purpose-adherence planner` or `purpose-adherence autoplan` with a valid
-  report.
-- `skills/purpose-adherence/report/SKILL.md` — Use only when the user invokes
-  `purpose-adherence report` with code targets and an approved purpose contract.
-- `skills/review-intent-and-coverage/SKILL.md` — Use when the user asks whether
-  current changes match intended behavior or whether tests and coverage are
-  sufficient.
-- `skills/testable-module/SKILL.md` — Use when the user asks to make code
-  testable, extract a module API, or rewrite code as a module.
-- `skills/validate-current-changes/SKILL.md` — Use when the user asks to
-  validate or audit current changes without fixing them, especially for bad
-  logic, invalid states, regressions, or overcomplication.
 - `skills/worktree/SKILL.md` — Use when the user asks to create or manage a Git
   worktree for agent sessions, code changes, or plan implementation.
 - `skills/write-a-skill/SKILL.md` — Use when the user asks to create, write,
