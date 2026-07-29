@@ -32,7 +32,9 @@ Missing purpose blocks purpose-adherence and new concept documentation. It also 
 
 Present the complete synthesized plan and stop. Begin edits only after the user explicitly approves that plan. An earlier agreement about architecture, requirements, mode, report, or workflow does not satisfy this gate.
 
-Use [worktree](../../worktree/SKILL.md) only when the user requests an isolated worktree. Never commit unless asked. Never delete a worktree unless asked.
+Use [worktree](../../delivery/worktree/SKILL.md) only when the user requests an
+isolated worktree. Never commit unless asked. Never delete a worktree unless
+asked.
 
 ## Gate 5 — Controlled execution
 
@@ -60,7 +62,7 @@ Create a supplemental plan for newly necessary edits. Do not disguise scope expa
 4. Confirm the complete diff matches the approved work package and acceptance
    criteria. Any corrective test or implementation edit requires a supplemental
    approved plan.
-5. Use [grow-docs](../../grow-docs/SKILL.md) only for justified, planned
+5. Use [grow-docs](../../knowledge/grow-docs/SKILL.md) only for justified, planned
    documentation backed by approved purpose and the active documentation
    profile. Do not use it to invent a missing purpose contract or force docs for
    a change with no documentation impact.

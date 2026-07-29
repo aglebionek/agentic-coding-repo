@@ -7,7 +7,7 @@ description: Creates or updates an internal evidence-and-planning specialist beh
 
 ## Establish the evidence domain
 
-1. Read [write-a-skill](../../write-a-skill/SKILL.md), the
+1. Read [write-a-skill](../write-a-skill/SKILL.md), the
    [specialist contract](../../code-workflow/specialists/SPECIALIST-CONTRACT.md),
    and [routing table](../../code-workflow/specialists/ROUTING.md) completely.
 2. Inspect existing specialists, profiles, artifact reconciliation, and quality

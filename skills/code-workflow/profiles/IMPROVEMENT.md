@@ -25,7 +25,9 @@ independently from evidence:
   entrypoint requests, or when initial exploration evidences multi-module
   structural friction
 
-Use [grow-docs](../../grow-docs/SKILL.md) when documentation is the requested outcome or approved implementation changes make existing notes incomplete. Grow-docs is not a purpose-discovery mechanism.
+Use [grow-docs](../../knowledge/grow-docs/SKILL.md) when documentation is the
+requested outcome or approved implementation changes make existing notes
+incomplete. Grow-docs is not a purpose-discovery mechanism.
 
 Use each selected report's matching internal planner in `manual` or `autorun`
 mode. A forced code-smell boundary crossing requires explicit user approval;

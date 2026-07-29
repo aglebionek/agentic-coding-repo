@@ -30,15 +30,23 @@ agentic-coding-repo/
 │   ├── TESTING_GUIDELINES.md
 │   └── AGENTIC_GLOSSARY.md
 ├── skills/
+│   ├── code-workflow/
+│   ├── interaction/
+│   ├── knowledge/
+│   ├── delivery/
+│   └── skill-authoring/
 └── notes/
 ```
 
 - Root `AGENTS.md` and `GLOSSARY.md` describe this repository itself.
 - `shared/` is the canonical source for distributable guidelines and generic
   terminology.
-- `skills/` contains distributable shared skills. `skills/code-workflow/` is a
-  deep public facade whose profiles, specialists, quality checks, and guidance
-  remain internal to that workflow.
+- `skills/` contains distributable shared skills grouped by responsibility.
+  `interaction/`, `knowledge/`, `delivery/`, and `skill-authoring/` contain
+  complete public skill bundles; their group roots are organizational and are
+  not skills themselves. `skills/code-workflow/` remains a deep public facade
+  whose profiles, specialists, quality checks, and guidance are internal to
+  that workflow.
 - `notes/` contains supporting research, not installed operational authority.
 - Root `CODING_GUIDELINES.md` is a compatibility pointer to the canonical file
   under `shared/`.
@@ -122,6 +130,12 @@ Shared skills are updated as one managed set under `.agentic/skills/`.
 Project-specific skills remain under root `skills/`; the installer neither
 moves nor compares them automatically.
 
+Root `AGENTS.md` is the canonical catalog for public source skill locations.
+External consumers that hardcode paths into this source repository must use
+the responsibility-grouped locations from that catalog. Installed projects do
+not migrate individual skill paths: the next managed update replaces the
+complete `.agentic/skills/` tree atomically.
+
 Use the public `code-workflow` profiles for issue work, bug fixes, improvement,
 and JavaScript-to-TypeScript conversion. Its report/planner specialists and
 current-changes audit are internal modules, not independently invocable skills.
@@ -166,6 +180,13 @@ Use the matching `code-workflow` profile; its facade now owns specialist
 routing, contract and fixture planning, and final diff auditing. External
 automation that invoked the retired standalone skills must migrate atomically
 to a `code-workflow` invocation.
+
+Current shared skill bundles are grouped by interaction, knowledge, delivery,
+and skill-authoring responsibility. External automation with hardcoded paths
+from the earlier flat source tree must update those paths using the root
+`AGENTS.md` catalog. Managed installations receive the reorganized tree as a
+complete replacement, so stale managed flat paths disappear without touching a
+project-owned root `skills/` directory.
 
 When a root coding-guidelines file or local skills tree exactly matches the
 current shared source, the installer reports it as a possible legacy copy for

@@ -45,41 +45,60 @@ target project's root files.
 
 Read the referenced `SKILL.md` completely after selecting a skill.
 
-- `skills/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
-  with no follow-up questions or types `a&s`.
-- `skills/caveman/SKILL.md` — Use when the user says `caveman mode`,
-  `talk like caveman`, `use caveman`, or `/caveman`.
+### Code workflow
+These skills are groupings of related skills that implement a complete code workflow.
+
 - `skills/code-workflow/SKILL.md` — Use when the user invokes `code-workflow`
   with the `issue`, `bug-fix`, `improve`, `js-to-ts`, or `js-to-ts-autoscope`
   profile.
-- `skills/create-gh-issue/SKILL.md` — Use when the user asks to create, draft,
+
+### Interaction
+
+- `skills/interaction/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
+  with no follow-up questions or types `a&s`.
+- `skills/interaction/caveman/SKILL.md` — Use when the user says `caveman mode`,
+  `talk like caveman`, `use caveman`, or `/caveman`.
+- `skills/interaction/grill-me/SKILL.md` — Use when the user asks to be grilled
+  or wants to stress-test a plan or design through questioning.
+- `skills/interaction/list-dont-modify/SKILL.md` — Use when the user says
+  `list don't modify`, `list only`, or `LDM`.
+
+### Knowledge
+
+- `skills/knowledge/domain-model/SKILL.md` — Use when the user wants to
+  stress-test a plan against the project's domain language and documented
+  decisions.
+- `skills/knowledge/grill-me-with-docs/SKILL.md` — Use when the user asks to be
+  grilled with docs or wants settled design decisions preserved in
+  documentation.
+- `skills/knowledge/grow-docs/SKILL.md` — Use when the user invokes `grow-docs`,
+  asks to document or expand a responsibility, improve documentation
+  navigation, run a documentation link or gap pass, or record an
+  already-approved decision.
+- `skills/knowledge/grow-glossary/SKILL.md` — Use when the user asks to grow a
+  glossary, calcify terminology, or review missing glossary candidates.
+
+### Delivery
+
+- `skills/delivery/create-gh-issue/SKILL.md` — Use when the user asks to create, draft,
   or turn work into a GitHub issue.
-- `skills/create-gh-pr/SKILL.md` — Use when the user asks to create or draft a
+- `skills/delivery/create-gh-pr/SKILL.md` — Use when the user asks to create or draft a
   GitHub pull request.
-- `skills/skill-authoring/create-code-workflow-specialist/SKILL.md` — Use when
-  the user explicitly asks to create or update a code-workflow specialist.
-- `skills/domain-model/SKILL.md` — Use when the user wants to stress-test a
-  plan against the project's domain language and documented decisions.
-- `skills/give-commit-message/SKILL.md` — Use when the user says `GCM`,
+- `skills/delivery/give-commit-message/SKILL.md` — Use when the user says `GCM`,
   `give commit message`, or otherwise asks for a commit message.
-- `skills/grill-me/SKILL.md` — Use when the user asks to be grilled or wants to
-  stress-test a plan or design through questioning.
-- `skills/grill-me-with-docs/SKILL.md` — Use when the user asks to be grilled
-  with docs or wants settled design decisions preserved in documentation.
-- `skills/grow-docs/SKILL.md` — Use when the user invokes `grow-docs`, asks to
-  document or expand a responsibility, improve documentation navigation, or run
-  a documentation link or gap pass, or record an already-approved decision.
-- `skills/grow-glossary/SKILL.md` — Use when the user asks to grow a glossary,
-  calcify terminology, or review missing glossary candidates.
-- `skills/handoff/SKILL.md` — Use when the user says `handoff`,
+- `skills/delivery/handoff/SKILL.md` — Use when the user says `handoff`,
   `handoff branch`, `handoff worktree`, `save plan`, or asks to continue in a
   new session.
-- `skills/list-dont-modify/SKILL.md` — Use when the user says
-  `list don't modify`, `list only`, or `LDM`.
-- `skills/worktree/SKILL.md` — Use when the user asks to create or manage a Git
-  worktree for agent sessions, code changes, or plan implementation.
-- `skills/write-a-skill/SKILL.md` — Use when the user asks to create, write,
-  build, or update an agent skill.
+- `skills/delivery/worktree/SKILL.md` — Use when the user asks to create or
+  manage a Git worktree for agent sessions, code changes, or plan
+  implementation.
+
+### Skill authoring
+
+- `skills/skill-authoring/create-code-workflow-specialist/SKILL.md` — Use when
+  the user explicitly asks to create or update a code-workflow specialist.
+- `skills/skill-authoring/write-a-skill/SKILL.md` — Use when the user asks to
+  create, write, build, or update an agent skill.
 
 ## Documentation profile
 

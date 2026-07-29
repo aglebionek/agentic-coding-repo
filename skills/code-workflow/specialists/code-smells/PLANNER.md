@@ -21,7 +21,7 @@ Read [PLAN-TEMPLATE.md](PLAN-TEMPLATE.md) completely before planning.
 
 ## Select mode
 
-- `manual`: read [grill-me](../../../grill-me/SKILL.md), resolve material
+- `manual`: read [grill-me](../../../interaction/grill-me/SKILL.md), resolve material
   decisions one question at a time, and recommend an answer. Preserve behavior
   and boundaries unless the user explicitly approves an exception.
 - `autorun`: make safe decisions independently and preserve runtime behavior,

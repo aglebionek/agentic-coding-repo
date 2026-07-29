@@ -12,7 +12,8 @@ Read [PLAN-TEMPLATE.md](PLAN-TEMPLATE.md) completely before planning.
 1. Require a complete js-to-ts-autoscope report and identify its source.
 2. Reject implementation planning when `Valid: false`.
    - In `autorun`, fail immediately without questions or interactive fallback.
-   - In `manual`, optionally read [grill-me](../../../grill-me/SKILL.md) and
+   - In `manual`, optionally read
+     [grill-me](../../../interaction/grill-me/SKILL.md) and
      resolve recovery decisions, but output only a clarified report-rerun
      handoff.
 3. Revalidate repository state, mode, seed, tooling, selected spine, invariant, file roles, findings, exclusions, and verification readiness.
@@ -20,7 +21,8 @@ Read [PLAN-TEMPLATE.md](PLAN-TEMPLATE.md) completely before planning.
 
 ## Select Planning Mode
 
-- `manual`: interactive. Read [grill-me](../../../grill-me/SKILL.md), resolve
+- `manual`: interactive. Read
+  [grill-me](../../../interaction/grill-me/SKILL.md), resolve
   material decisions one at a time, and recommend an answer.
 - `autorun`: AFK-safe. Make only evidence-backed decisions. Reject instead of
   guessing through purpose ambiguity, behavior/product/security/public-contract

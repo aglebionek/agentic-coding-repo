@@ -20,7 +20,8 @@ Read [PLAN-TEMPLATE.md](PLAN-TEMPLATE.md) completely before planning.
 
 ## Select mode
 
-- `manual`: read [grill-me](../../../grill-me/SKILL.md) and resolve material
+- `manual`: read [grill-me](../../../interaction/grill-me/SKILL.md) and resolve
+  material
   decisions one question at a time, always recommending an answer.
 - `autorun`: make safe decisions independently. Never ask questions or guess
   through behavioral ambiguity, public-contract change, migration, broad

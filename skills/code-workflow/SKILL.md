@@ -36,7 +36,9 @@ table](specialists/ROUTING.md).
 
 ## Modes
 
-- `manual`: resolve material decisions one at a time with [grill-me](../grill-me/SKILL.md), recommend an answer, and record the decision.
+- `manual`: resolve material decisions one at a time with
+  [grill-me](../interaction/grill-me/SKILL.md), recommend an answer, and record
+  the decision.
 - `autorun`: make safe, evidence-backed decisions without questions. Stop on ambiguous intended behavior, invalid specialist reports, public-contract or migration changes, architecture changes, new dependencies, destructive work, or security/access-policy choices.
 
 Both modes require explicit user approval of the synthesized implementation plan. Autorun resumes autonomous execution only after that approval.

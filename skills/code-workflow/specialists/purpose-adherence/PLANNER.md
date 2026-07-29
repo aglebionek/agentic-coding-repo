@@ -21,7 +21,8 @@ Never repair, reinterpret, or plan changes to `## Intended purpose`; contract co
 
 ## Select mode
 
-- `manual`: read [grill-me](../../../grill-me/SKILL.md) and resolve material
+- `manual`: read [grill-me](../../../interaction/grill-me/SKILL.md) and resolve
+  material
   decisions one question at a time, always recommending an answer.
 - `autorun`: make safe action decisions independently. Never ask questions,
   start an interactive session, or guess through material behavioral ambiguity,

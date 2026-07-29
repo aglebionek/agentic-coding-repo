@@ -28,8 +28,8 @@ Architecture planning is always interactive. `code-workflow improve autorun`
 must stop at the first confirmed `ARCH-*` finding after the read-only report
 and request manual continuation; it must not enter this planner autonomously.
 
-In manual mode, read [grill-me](../../../grill-me/SKILL.md). Compare at least
-two materially different module/interface structures under
+In manual mode, read [grill-me](../../../interaction/grill-me/SKILL.md).
+Compare at least two materially different module/interface structures under
 [INTERFACE-DESIGN.md](INTERFACE-DESIGN.md). Resolve material decisions one at a
 time, recommend an answer, and record the user's choice and rationale.
 Parallel agents are optional and allowed only when the user explicitly requests
@@ -52,8 +52,9 @@ delegation.
    red/green and post-green hardening when behavior changes.
 5. Identify documentation impact and decision records without editing them.
    After implementation approval, route approved decision recording and
-   navigation updates through [grow-docs](../../../grow-docs/SKILL.md) under the
-   active documentation profile.
+   navigation updates through
+   [grow-docs](../../../knowledge/grow-docs/SKILL.md) under the active
+   documentation profile.
 6. Emit one definitive implementation path for code-workflow synthesis. Treat
    new responsibility, contract, compatibility, migration, destructive,
    dependency, security, or test-expectation decisions as execution stop
