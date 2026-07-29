@@ -33,6 +33,7 @@ target project's root files.
   documentation principles.
 - `shared/CODING_GUIDELINES.md` — canonical reusable JavaScript and TypeScript
   coding guidance.
+- `shared/TESTING_GUIDELINES.md` — canonical project-agnostic testing guidance.
 - `shared/AGENTIC_GLOSSARY.md` — canonical project-agnostic workflow terms.
 - `skills/` — reusable skill sources. Read the matching `SKILL.md` completely
   before using or changing a skill.

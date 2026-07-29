@@ -40,7 +40,10 @@ Both modes require explicit user approval of the synthesized implementation plan
 
 1. Read applicable repository instructions, coding guidelines, shared
    architecture guidance when installed, and the project documentation profile.
-   Record revision and dirty state; preserve unrelated work.
+   When executable behavior may change, also read the shared
+   `TESTING_GUIDELINES.md` from the installed resource layer (source repository:
+   `shared/TESTING_GUIDELINES.md`). Record revision and dirty state; preserve
+   unrelated work.
 2. Establish the source request, exact code scope, approved purpose authority if any, acceptance criteria, exclusions, and verification baseline.
 3. Select only specialists justified by the profile and evidence. Read each selected skill and its required references completely before invoking it.
 4. Require valid, fresh reports before using their planners. Keep reports and plans read-only.

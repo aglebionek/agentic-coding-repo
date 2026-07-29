@@ -318,21 +318,12 @@ type AccessResult =
 
 ## Tests
 
-- Agree on the API contract before implementation: the question being answered,
-  minimal input, complete output, expected effects, and failure behavior.
-- For new behavior, bug fixes, and extracted logic, write tests against the agreed
-  contract before implementing it.
-- Mechanical wiring, type-only changes, and presentation-only changes do not need a
-  unit test unless a test would validate meaningful behavior.
-- Test public behavior through inputs, outputs, state snapshots, saved values, and
-  calls to injected dependencies. Do not mirror implementation steps in assertions.
-- Cover the main case, meaningful edge cases, and every result variant that callers
-  must handle.
-- Add a regression test for a bug before fixing it when the behavior can be expressed
-  through a stable API.
-- Prefer hand-written fakes for application dependencies. Use framework mocks only
-  where the framework itself is the boundary under test.
-- Keep tests deterministic by injecting time, randomness, scheduling, and external
-  capabilities.
-- If a test requires reaching into private state, reconsider the public contract or
-  extract the behavior into a separate testable module.
+Follow [Testing Guidelines](TESTING_GUIDELINES.md) as the canonical testing
+policy. For JavaScript and TypeScript specifically:
+
+- use type-level tests or compiler checks when the contract is enforced by the
+  type system, and runtime tests when behavior exists at runtime;
+- compile tests under the project's effective TypeScript settings so looser test
+  configuration does not hide contract violations;
+- exercise every meaningful discriminated-union variant that callers must
+  handle, including exhaustive branching where the type contract requires it.

@@ -71,6 +71,7 @@ required_files=(
     "BASE_AGENT_GUIDELINES.md"
     "ARCHITECTURE_GUIDELINES.md"
     "CODING_GUIDELINES.md"
+    "TESTING_GUIDELINES.md"
     "AGENTIC_GLOSSARY.md"
 )
 

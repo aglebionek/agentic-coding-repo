@@ -1,6 +1,6 @@
 ---
 name: testable-module
-description: Guides refactoring code as a testable module with a clear pure-function API. Follows a TDD flow: agree on contract → write tests → implement. Use when user wants to make code testable, extract a module API, says "make testable", "module API", or "rewrite as module".
+description: Guides refactoring code as a testable module with a clear pure-function API and realistic fixtures. Use when user wants to make code testable, extract a module API, says "make testable", "module API", or "rewrite as module".
 ---
 
 # Testable Module
@@ -12,6 +12,11 @@ A **module** is any unit of code (functions, classes, files, helpers) that can b
 The output type should always be **data** (plain objects / typed configs), never UI components or side effects. This keeps the pure function free of framework dependencies and makes it directly unit-testable.
 
 ## Workflow
+
+Follow the shared `TESTING_GUIDELINES.md` from the installed resource layer
+(source repository: `shared/TESTING_GUIDELINES.md`) as the sole authority for
+test-first sequencing, red and green verification, hardening, preservation, and
+exceptions.
 
 ### Phase 1 — Discover the API
 
@@ -34,21 +39,22 @@ List what realistic input examples are needed to cover the important cases. For 
 
 Ask the user to confirm the fixture list before writing them.
 
-### Phase 3 — Write Tests (TDD)
+### Phase 3 — Map contract examples to tests
 
 Using the existing test setup (do not introduce a new test runner):
-1. Write tests that import the pure function and call it with fixtures
-2. Cover the main cases and edge cases identified in Phase 2
-3. Do **not** run the tests yet — they should fail (function doesn't exist)
+
+1. Map the approved contract examples and edges to behavioral tests.
+2. Import the pure function and call it with the approved fixtures.
+3. Apply the shared testing guideline's verified red phase.
 
 ### Phase 4 — Implement
 
-Write the pure function that makes all tests pass:
+Apply the shared testing guideline's first-green and hardening passes while
+extracting the pure function:
+
 - Extract the conditional logic from the existing messy code
 - Zero side effects, zero UI imports
 - All dependencies injected as arguments
-
-Run the tests. Iterate until all pass.
 
 ### Phase 5 — Check docs
 

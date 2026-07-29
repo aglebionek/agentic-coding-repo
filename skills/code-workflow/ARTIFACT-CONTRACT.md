@@ -34,6 +34,7 @@ Emit the work package in conversation unless the user requests a path. Do not wr
 ## Bug regression proof
 
 Every synthesized plan that fixes a bug-hunt finding must include durable regression proof mapped to the original finding ID.
+Apply the shared `TESTING_GUIDELINES.md` as the canonical testing policy.
 
 - Fixed confirmed findings, such as `BH-Fn`, require a specific regression test, focused reproduction check, or explicitly justified non-test proof.
 - Fixed probable findings, such as verified `BH-Pn`, require the pre-fix confirmation gate first, then the same regression-proof requirement as confirmed findings.

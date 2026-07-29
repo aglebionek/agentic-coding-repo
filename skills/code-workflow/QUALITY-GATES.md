@@ -36,6 +36,9 @@ Use [worktree](../worktree/SKILL.md) only when the user requests an isolated wor
 
 - Implement only approved steps and preserve unrelated work.
 - Follow repository-native test, type, lint, and build commands, starting with focused checks.
+- Follow the shared `TESTING_GUIDELINES.md` as the sole testing authority for
+  contract-first tests, verified red and green phases, hardening, preservation,
+  and justified alternate proof.
 - For testable-module work, obtain its required API and fixture agreement during planning; the approved synthesized plan records those decisions.
 - For fixed bug-hunt findings, add or run the approved finding-level regression proof before considering the correction complete. Stop if the approved proof is not viable or no longer matches the bug trigger.
 - Stop before unapproved behavior, public-interface, data-format, error-semantic, test-expectation, dependency, migration, architecture, destructive, or security/access-policy changes.

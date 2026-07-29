@@ -27,6 +27,7 @@ agentic-coding-repo/
 │   ├── BASE_AGENT_GUIDELINES.md
 │   ├── ARCHITECTURE_GUIDELINES.md
 │   ├── CODING_GUIDELINES.md
+│   ├── TESTING_GUIDELINES.md
 │   └── AGENTIC_GLOSSARY.md
 ├── skills/
 └── notes/
@@ -53,6 +54,7 @@ target-project/
     ├── BASE_AGENT_GUIDELINES.md
     ├── ARCHITECTURE_GUIDELINES.md
     ├── CODING_GUIDELINES.md
+    ├── TESTING_GUIDELINES.md
     ├── AGENTIC_GLOSSARY.md
     └── skills/               # centrally managed shared skills
 ```
@@ -97,6 +99,7 @@ Read and follow:
 
 - `.agentic/BASE_AGENT_GUIDELINES.md`
 - `.agentic/ARCHITECTURE_GUIDELINES.md`
+- `.agentic/TESTING_GUIDELINES.md` when executable behavior may change
 - `.agentic/CODING_GUIDELINES.md` when applicable
 - `.agentic/AGENTIC_GLOSSARY.md`
 
@@ -106,6 +109,10 @@ Shared skills live under `.agentic/skills/`. Project-specific skills live under
 
 The project's instructions decide how shared defaults interact with local
 authority.
+
+`shared/TESTING_GUIDELINES.md` is the canonical project-agnostic testing
+authority and is installed as `.agentic/TESTING_GUIDELINES.md`. Language- and
+workflow-specific resources link to it instead of restating its policy.
 
 ## Skills and glossaries
 

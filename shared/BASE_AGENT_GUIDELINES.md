@@ -9,8 +9,9 @@ constraints, documentation profile, and local workflows.
 1. Read the target project's root `AGENTS.md`.
 2. Read this file and the shared glossary.
 3. Read `ARCHITECTURE_GUIDELINES.md` for architecture or documentation work.
-4. Read `CODING_GUIDELINES.md` when changing JavaScript or TypeScript.
-5. Load only the shared or project-local skills that match the request.
+4. Read `TESTING_GUIDELINES.md` when executable behavior may change.
+5. Read `CODING_GUIDELINES.md` when changing JavaScript or TypeScript.
+6. Load only the shared or project-local skills that match the request.
 
 If project instructions conflict with optional shared defaults, follow the
 project instructions. Do not use this layer to overwrite project-owned
@@ -24,6 +25,8 @@ decisions.
 - Keep destructive effects, compatibility consequences, security implications,
   and meaningful failure modes visible before acting.
 - Do not infer material intended behavior when project authority is missing.
+- Follow `TESTING_GUIDELINES.md` for contract-first verification, test
+  preservation, and justified alternate proof.
 - Use project-native validation and report checks that could not be run.
 - Do not commit, push, create external artifacts, or remove worktrees unless the
   user authorizes those actions.
