@@ -186,11 +186,13 @@ After installing `.agentic/`:
 
 Older shared versions advertised standalone report/planner pairs,
 `testable-module`, `validate-current-changes`, and
-`review-intent-and-coverage`. Those entrypoints were intentionally removed.
-Use the matching `code-workflow` profile; its facade now owns specialist
-routing, contract and fixture planning, and final diff auditing. External
-automation that invoked the retired standalone skills must migrate atomically
-to a `code-workflow` invocation.
+`review-intent-and-coverage`. Those user-invoked entrypoints were intentionally
+removed. Report/planner routing, contract and fixture planning, and final diff
+auditing remain owned by the matching `code-workflow` profile. `testable-module`
+has since returned as a narrower agent-invoked design discipline; it does not
+provide the legacy end-to-end refactoring workflow. External automation that
+invoked any retired standalone workflow must migrate atomically to a
+`code-workflow` invocation.
 
 Current shared skill bundles are grouped by interaction, knowledge, delivery,
 and skill-authoring responsibility. External automation with hardcoded paths

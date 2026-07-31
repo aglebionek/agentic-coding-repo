@@ -3,6 +3,10 @@
 Use this guidance during planning when executable behavior is being introduced,
 corrected, or extracted behind a clearer module boundary.
 
+When the current responsibility has no credible behavioral seam, read
+[testable-module](../../../agent-invoked/engineering/testable-module/SKILL.md)
+before establishing the contract and fixtures.
+
 ## Establish the public contract
 
 Describe the question the module answers and agree on:

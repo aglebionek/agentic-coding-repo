@@ -1,0 +1,4 @@
+interface:
+  display_name: "Testable Module"
+  short_description: "Design stable module seams for testing"
+  default_prompt: "Use $testable-module to establish a stable public seam and contract for this behavior before implementation."

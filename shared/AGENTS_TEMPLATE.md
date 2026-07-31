@@ -67,6 +67,9 @@ These skills are groupings of related skills that implement a complete code work
 - `.agentic/skills/agent-invoked/engineering/domain-modeling/SKILL.md` — Use
   when domain terminology or architectural decisions need to be challenged or
   recorded.
+- `.agentic/skills/agent-invoked/engineering/testable-module/SKILL.md` — Use
+  when behavior needs a stable public module contract and deterministic test
+  seam before TDD.
 - `.agentic/skills/agent-invoked/engineering/tdd/SKILL.md` — Use when
   implementing behavior test-first with a red-green loop at agreed seams.
 - `.agentic/skills/agent-invoked/engineering/code-review/SKILL.md` — Use when
