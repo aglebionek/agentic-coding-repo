@@ -1,6 +1,6 @@
 ---
 name: give-commit-message
-description: Produces a concise commit message for completed coding work, emphasizing why the change was made. Use when the user says "GCM", "give commit message", "give me a commit message", or asks for a commit message.
+description: Produces a concise commit message for completed coding work, emphasizing why the change was made. Use when the user says "GCM" or asks for a commit message.
 ---
 
 # Give Commit Message
@@ -11,10 +11,12 @@ Produce only a commit message unless the user asks for explanation. Do not commi
 
 1. Review the completed work from the conversation and inspect current changes if needed.
 2. Identify the user-facing, architectural, or maintenance reason for the change.
-3. Write 1-3 sentences that emphasize why the change was made more than what files changed.
+3. Read `./PREFIX_FORMAT.md` and select appropriate prefix type.
+4. Write 1-3 sentences that emphasize why the change was made more than what files changed.
 
 ## Style
 
+- Add the format-conforming prefix at the beginning of the commit message, e.g., `fix:`, `feat:`, `docs:`.
 - Prefer a direct sentence or short subject plus body.
 - Avoid bullets, markdown headings, file lists, and generated-by language.
 - Mention implementation details only when they clarify the reason or risk being addressed.
