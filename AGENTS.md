@@ -43,10 +43,26 @@ target project's root files.
   operational authority.
 - `README.md` — installation, ownership, migration, and adoption guide.
 
+## Agent skills
+
+### Issue tracker
+
+Specs, tickets, and Wayfinder maps are tracked as GitHub issues in this
+repository. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+This repository uses a single-context domain model. See
+`docs/agents/domain.md`.
+
 ## Skills
 
 Read the referenced `SKILL.md` completely after selecting a skill.
 Load only skills whose trigger matches the request.
+
+Skills under `skills/user-invoked/` run only when the user explicitly invokes
+them. Skills under `skills/agent-invoked/` may also be selected automatically
+when their trigger matches the task.
 
 ### Code workflow
 These skills are groupings of related skills that implement a complete code workflow.
@@ -55,8 +71,34 @@ These skills are groupings of related skills that implement a complete code work
   with the `issue`, `bug-fix`, `improve`, `js-to-ts`, or `js-to-ts-autoscope`
   profile.
 
+### Engineering workflows
+
+- `skills/user-invoked/engineering/grill-with-docs/SKILL.md` — Use when the
+  user invokes `grill-with-docs` or asks to preserve decisions during a design
+  interview.
+- `skills/user-invoked/engineering/to-spec/SKILL.md` — Use when the user
+  invokes `to-spec` to synthesize the current conversation into a published
+  specification.
+- `skills/user-invoked/engineering/to-tickets/SKILL.md` — Use when the user
+  invokes `to-tickets` to split approved work into tracer-bullet tickets.
+- `skills/user-invoked/engineering/implement/SKILL.md` — Use when the user
+  invokes `implement` with an approved spec or set of tickets.
+- `skills/user-invoked/engineering/wayfinder/SKILL.md` — Use when the user
+  invokes `wayfinder` for work too large or uncertain for one agent session.
+
+### Engineering disciplines
+
+- `skills/agent-invoked/engineering/domain-modeling/SKILL.md` — Use when domain
+  terminology or architectural decisions need to be challenged or recorded.
+- `skills/agent-invoked/engineering/tdd/SKILL.md` — Use when implementing
+  behavior test-first with a red-green loop at agreed seams.
+- `skills/agent-invoked/engineering/code-review/SKILL.md` — Use when reviewing
+  changes against both repository standards and an originating specification.
+
 ### Interaction
 
+- `skills/agent-invoked/productivity/grilling/SKILL.md` — Use when a plan,
+  decision, or idea needs a one-question-at-a-time stress test.
 - `skills/user-invoked/interaction/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
   with no follow-up questions or types `a&s`.
 - `skills/user-invoked/interaction/caveman/SKILL.md` — Use when the user says `caveman mode`,
@@ -65,6 +107,11 @@ These skills are groupings of related skills that implement a complete code work
   or wants to stress-test a plan or design through questioning.
 - `skills/user-invoked/interaction/list-dont-modify/SKILL.md` — Use when the user says
   `list don't modify`, `list only`, or `LDM`.
+
+### Productivity
+
+- `skills/user-invoked/productivity/teach/SKILL.md` — Use when the user invokes
+  `teach` or asks for a stateful, multi-session learning workflow.
 
 ### Knowledge
 

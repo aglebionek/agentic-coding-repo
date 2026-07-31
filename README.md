@@ -33,23 +33,28 @@ agentic-coding-repo/
 ├── skills/
 │   ├── user-invoked/
 │   │   ├── code-workflow/
+│   │   ├── engineering/
 │   │   ├── interaction/
 │   │   ├── delivery/
+│   │   ├── productivity/
 │   │   └── skill-authoring/
 │   ├── knowledge/
 │   └── agent-invoked/
+│       ├── engineering/
+│       └── productivity/
 └── notes/
 ```
 
 - Root `AGENTS.md` and `GLOSSARY.md` describe this repository itself.
 - `shared/` is the canonical source for distributable guidelines and generic
   terminology.
-- `skills/` contains distributable shared skills grouped by responsibility.
-  `interaction/`, `knowledge/`, `delivery/`, and `skill-authoring/` contain
-  complete public skill bundles; their group roots are organizational and are
-  not skills themselves. `skills/user-invoked/code-workflow/` remains a deep
-  public facade whose profiles, specialists, quality checks, and guidance are
-  internal to that workflow.
+- `skills/` contains distributable shared skills grouped first by invocation
+  contract and then by responsibility. `user-invoked/` contains explicit
+  orchestration workflows; `agent-invoked/` contains reusable disciplines that
+  agents may select automatically. Group roots are organizational and are not
+  skills themselves. `skills/user-invoked/code-workflow/` remains a deep public
+  facade whose profiles, specialists, quality checks, and guidance are internal
+  to that workflow.
 - `notes/` contains supporting research, not installed operational authority.
 - Root `CODING_GUIDELINES.md` is a compatibility pointer to the canonical file
   under `shared/`.
@@ -131,6 +136,9 @@ workflow-specific resources link to it instead of restating its policy.
 Shared skills are updated as one managed set under `.agentic/skills/`.
 Project-specific skills remain under root `skills/`; the installer neither
 moves nor compares them automatically.
+
+Third-party skill sources, licenses, and the lineage of skills migrated into
+new internal modules are recorded in `skills/THIRD_PARTY_NOTICES.md`.
 
 Root `AGENTS.md` is the canonical catalog for public source skill locations.
 External consumers that hardcode paths into this source repository must use
