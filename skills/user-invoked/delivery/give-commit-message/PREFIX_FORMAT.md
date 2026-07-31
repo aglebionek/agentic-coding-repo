@@ -1,3 +1,5 @@
+Main source - [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0/#specification)
+
 The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in `./COMPACT_RFC2119.md`.
 
 1. Commits MUST be prefixed with a type, which consists of a noun, feat, fix, etc., followed by the OPTIONAL scope, OPTIONAL !, and REQUIRED terminal colon and space.
