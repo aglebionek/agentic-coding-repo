@@ -9,6 +9,10 @@ Create a testable module only when the current responsibility lacks a credible
 behavioral seam. Treat testability as feedback about design, not a reason to
 publish internals or force every operation into a pure function.
 
+Read `.agentic/ARCHITECTURE_GUIDELINES.md` when installed, or the repository's
+canonical equivalent in a shared source tree, before designing or changing the
+module boundary.
+
 ## Diagnose the missing seam
 
 Inspect callers, current public interfaces, effects, state, dependencies, and

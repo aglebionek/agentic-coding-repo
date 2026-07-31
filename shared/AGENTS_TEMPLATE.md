@@ -21,7 +21,6 @@
 Read and follow:
 
 - `.agentic/BASE_AGENT_GUIDELINES.md`
-- `.agentic/ARCHITECTURE_GUIDELINES.md` for architecture or documentation work
 - `.agentic/TESTING_GUIDELINES.md` when executable behavior may change
 - `.agentic/CODING_GUIDELINES.md` when changing JavaScript or TypeScript
 - `.agentic/AGENTIC_GLOSSARY.md` for shared workflow terminology

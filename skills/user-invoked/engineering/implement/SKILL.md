@@ -6,6 +6,9 @@ disable-model-invocation: true
 
 Implement the work described by the user in the spec or tickets.
 
+Before changing code, read `.agentic/ARCHITECTURE_GUIDELINES.md` when
+installed, or the repository's canonical equivalent in a shared source tree.
+
 Use the `tdd` skill where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
