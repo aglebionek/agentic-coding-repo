@@ -26,18 +26,18 @@ Phases 1–3 are complete and committed:
 
 At this handoff:
 
-- `skills/code-workflow/SKILL.md` is the sole public code-workflow facade.
-- Five profiles live under `skills/code-workflow/profiles/`.
+- `skills/user-invoked/code-workflow/SKILL.md` is the sole public code-workflow facade.
+- Five profiles live under `skills/user-invoked/code-workflow/profiles/`.
 - Six internal specialists live under
-  `skills/code-workflow/specialists/`; none contains `SKILL.md` or skill front
+  `skills/user-invoked/code-workflow/specialists/`; none contains `SKILL.md` or skill front
   matter.
 - Shared specialist rules live in
-  `skills/code-workflow/specialists/SPECIALIST-CONTRACT.md`.
+  `skills/user-invoked/code-workflow/specialists/SPECIALIST-CONTRACT.md`.
 - Selective routing lives in
-  `skills/code-workflow/specialists/ROUTING.md`.
-- Quality modules live under `skills/code-workflow/quality/`.
-- Contract/fixture guidance lives under `skills/code-workflow/guidance/`.
-- `skills/skill-authoring/create-code-workflow-specialist/SKILL.md` is the
+  `skills/user-invoked/code-workflow/specialists/ROUTING.md`.
+- Quality modules live under `skills/user-invoked/code-workflow/quality/`.
+- Contract/fixture guidance lives under `skills/user-invoked/code-workflow/guidance/`.
+- `skills/user-invoked/skill-authoring/create-code-workflow-specialist/SKILL.md` is the
   public authoring entrypoint.
 - Root `AGENTS.md` advertises 17 public skills, matching the 17 existing
   `SKILL.md` files exactly.
@@ -69,7 +69,7 @@ read-only architecture specialist used selectively by
 Create:
 
 ```text
-skills/code-workflow/specialists/architecture/
+skills/user-invoked/code-workflow/specialists/architecture/
 ├── REPORT.md
 ├── REPORT-TEMPLATE.md
 ├── PLANNER.md
@@ -94,7 +94,7 @@ catalog entry and direct trigger.
   inseparable cluster, establishes authority and compatibility, compares at
   least two materially different module/interface structures, resolves material
   decisions interactively, and emits one read-only evidence-mapped plan.
-- Route it only from `skills/code-workflow/profiles/IMPROVEMENT.md`.
+- Route it only from `skills/user-invoked/code-workflow/profiles/IMPROVEMENT.md`.
 - Select it for explicit architecture/depth/locality/leverage/facade/navigation
   requests or evidenced multi-module structural friction.
 - In autorun, the report may run read-only; the first confirmed architecture
@@ -186,7 +186,7 @@ links, and do not leave compatibility `SKILL.md` files at old paths.
 
 - Root `AGENTS.md` remains the canonical public skill catalog and should be
   organized under responsibility headings.
-- `skills/code-workflow/SKILL.md` remains the facade for internal specialists.
+- `skills/user-invoked/code-workflow/SKILL.md` remains the facade for internal specialists.
 - Update code-workflow links to moved helpers such as `grill-me`, `grow-docs`,
   and `worktree`.
 - Update README source-tree, skill-location, and migration documentation.
@@ -206,7 +206,7 @@ test proving:
 - stale managed skill paths disappear;
 - the second install is idempotent.
 
-Invoke `skills/delivery/give-commit-message/SKILL.md`, print the Phase 5 commit
+Invoke `skills/user-invoked/delivery/give-commit-message/SKILL.md`, print the Phase 5 commit
 message, and do not commit.
 
 Report phase-by-phase outcomes, checks, commit messages, uncommitted phases,

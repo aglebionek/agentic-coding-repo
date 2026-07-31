@@ -56,7 +56,7 @@ wrapper skills. Do not add `SKILL.md` files at group roots.
 ## Public reading and discovery
 
 - Root `AGENTS.md` remains the canonical public skill catalog.
-- `skills/code-workflow/SKILL.md` remains the code-workflow facade.
+- `skills/user-invoked/code-workflow/SKILL.md` remains the code-workflow facade.
 - Every public skill remains reachable directly from the catalog.
 - Internal code-workflow modules remain discoverable only through the
   code-workflow facade and routing files.
@@ -94,7 +94,7 @@ must update them. Installed projects receive the complete replacement
 ## End-of-phase GCM
 
 After all gates pass, invoke
-`skills/delivery/give-commit-message/SKILL.md` and produce a commit message for
+`skills/user-invoked/delivery/give-commit-message/SKILL.md` and produce a commit message for
 the public skill-directory migration only. Do not commit.
 
 Report the deferred architecture-glossary option from Phase 4 and stop for the

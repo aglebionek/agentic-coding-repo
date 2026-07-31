@@ -21,7 +21,7 @@ It also overlaps the public orchestration already owned by
 Retire the standalone skill after migrating its valuable content into:
 
 ```text
-skills/code-workflow/specialists/architecture/
+skills/user-invoked/code-workflow/specialists/architecture/
 ├── REPORT.md
 ├── REPORT-TEMPLATE.md
 ├── PLANNER.md

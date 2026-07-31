@@ -12,7 +12,5 @@ cd "../worktrees/${BRANCH_NAME}"
 cat > .worktree-session <<EOF
     path-to-worktree: $(pwd)
     branch-name: ${BRANCH_NAME}
-    model-name: $2
-    task: $3
     started: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
 EOF

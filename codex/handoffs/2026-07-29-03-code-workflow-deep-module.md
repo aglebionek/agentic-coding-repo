@@ -8,7 +8,7 @@ testability mechanics, and validation ordering that the workflow should own.
 
 ## Public contract
 
-`skills/code-workflow/SKILL.md` remains the single public facade for:
+`skills/user-invoked/code-workflow/SKILL.md` remains the single public facade for:
 
 - `code-workflow issue <issue-number-or-url> [manual|autorun]`;
 - `code-workflow bug-fix <report-or-target> [manual|autorun]`;
@@ -23,7 +23,7 @@ skills.
 ## Desired module tree
 
 ```text
-skills/code-workflow/
+skills/user-invoked/code-workflow/
 ├── SKILL.md
 ├── ARTIFACT-CONTRACT.md
 ├── profiles/
@@ -110,7 +110,7 @@ link to it but retain the profile-specific reason for selecting a specialist.
 Replace `skills/create-report-planner-skill/` with:
 
 ```text
-skills/skill-authoring/create-code-workflow-specialist/
+skills/user-invoked/skill-authoring/create-code-workflow-specialist/
 └── SKILL.md
 ```
 

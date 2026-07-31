@@ -31,11 +31,13 @@ agentic-coding-repo/
 │   ├── TESTING_GUIDELINES.md
 │   └── AGENTIC_GLOSSARY.md
 ├── skills/
-│   ├── code-workflow/
-│   ├── interaction/
+│   ├── user-invoked/
+│   │   ├── code-workflow/
+│   │   ├── interaction/
+│   │   ├── delivery/
+│   │   └── skill-authoring/
 │   ├── knowledge/
-│   ├── delivery/
-│   └── skill-authoring/
+│   └── agent-invoked/
 └── notes/
 ```
 
@@ -45,9 +47,9 @@ agentic-coding-repo/
 - `skills/` contains distributable shared skills grouped by responsibility.
   `interaction/`, `knowledge/`, `delivery/`, and `skill-authoring/` contain
   complete public skill bundles; their group roots are organizational and are
-  not skills themselves. `skills/code-workflow/` remains a deep public facade
-  whose profiles, specialists, quality checks, and guidance are internal to
-  that workflow.
+  not skills themselves. `skills/user-invoked/code-workflow/` remains a deep
+  public facade whose profiles, specialists, quality checks, and guidance are
+  internal to that workflow.
 - `notes/` contains supporting research, not installed operational authority.
 - Root `CODING_GUIDELINES.md` is a compatibility pointer to the canonical file
   under `shared/`.

@@ -112,7 +112,7 @@ plan must:
   explanation.
 - Update `fetch-agent-assets.sh` so `.agentic/TESTING_GUIDELINES.md` is required,
   installed, and printed.
-- Update `skills/code-workflow/SKILL.md` setup so every profile reads the testing
+- Update `skills/user-invoked/code-workflow/SKILL.md` setup so every profile reads the testing
   guideline when executable behavior may change.
 - Update code-workflow quality/artifact references only as needed to point to the
   canonical testing authority without yet moving files.

@@ -51,19 +51,19 @@ Load only skills whose trigger matches the request.
 ### Code workflow
 These skills are groupings of related skills that implement a complete code workflow.
 
-- `skills/code-workflow/SKILL.md` — Use when the user invokes `code-workflow`
+- `skills/user-invoked/code-workflow/SKILL.md` — Use when the user invokes `code-workflow`
   with the `issue`, `bug-fix`, `improve`, `js-to-ts`, or `js-to-ts-autoscope`
   profile.
 
 ### Interaction
 
-- `skills/interaction/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
+- `skills/user-invoked/interaction/answer-and-stop/SKILL.md` — Use when the user wants a direct answer
   with no follow-up questions or types `a&s`.
-- `skills/interaction/caveman/SKILL.md` — Use when the user says `caveman mode`,
+- `skills/user-invoked/interaction/caveman/SKILL.md` — Use when the user says `caveman mode`,
   `talk like caveman`, `use caveman`, or `/caveman`.
-- `skills/interaction/grill-me/SKILL.md` — Use when the user asks to be grilled
+- `skills/user-invoked/interaction/grill-me/SKILL.md` — Use when the user asks to be grilled
   or wants to stress-test a plan or design through questioning.
-- `skills/interaction/list-dont-modify/SKILL.md` — Use when the user says
+- `skills/user-invoked/interaction/list-dont-modify/SKILL.md` — Use when the user says
   `list don't modify`, `list only`, or `LDM`.
 
 ### Knowledge
@@ -83,24 +83,24 @@ These skills are groupings of related skills that implement a complete code work
 
 ### Delivery
 
-- `skills/delivery/create-gh-issue/SKILL.md` — Use when the user asks to create, draft,
+- `skills/user-invoked/delivery/create-gh-issue/SKILL.md` — Use when the user asks to create, draft,
   or turn work into a GitHub issue.
-- `skills/delivery/create-gh-pr/SKILL.md` — Use when the user asks to create or draft a
+- `skills/user-invoked/delivery/create-gh-pr/SKILL.md` — Use when the user asks to create or draft a
   GitHub pull request.
-- `skills/delivery/give-commit-message/SKILL.md` — Use when the user says `GCM`,
+- `skills/user-invoked/delivery/give-commit-message/SKILL.md` — Use when the user says `GCM`,
   `give commit message`, or otherwise asks for a commit message.
-- `skills/delivery/handoff/SKILL.md` — Use when the user says `handoff`,
+- `skills/user-invoked/delivery/handoff/SKILL.md` — Use when the user says `handoff`,
   `handoff branch`, `handoff worktree`, `save plan`, or asks to continue in a
   new session.
-- `skills/delivery/worktree/SKILL.md` — Use when the user asks to create or
+- `skills/user-invoked/delivery/handoff/worktree/SKILL.md` — Use when the user asks to create or
   manage a Git worktree for agent sessions, code changes, or plan
   implementation.
 
 ### Skill authoring
 
-- `skills/skill-authoring/create-code-workflow-specialist/SKILL.md` — Use when
+- `skills/user-invoked/skill-authoring/create-code-workflow-specialist/SKILL.md` — Use when
   the user explicitly asks to create or update a code-workflow specialist.
-- `skills/skill-authoring/write-a-skill/SKILL.md` — Use when the user asks to
+- `skills/user-invoked/skill-authoring/write-a-skill/SKILL.md` — Use when the user asks to
   create, write, build, or update an agent skill.
 
 ## Documentation profile

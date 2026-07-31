@@ -21,7 +21,7 @@ description: Creates or updates an internal evidence-and-planning specialist beh
 
 ## Create the internal module
 
-Under `skills/code-workflow/specialists/<name>/`, create only the justified
+Under `skills/user-invoked/code-workflow/specialists/<name>/`, create only the justified
 subset of:
 
 ```text
